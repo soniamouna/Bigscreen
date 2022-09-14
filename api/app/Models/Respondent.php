@@ -17,7 +17,7 @@ class Respondent extends Model
 
     public static function getAll(): object
     {
-        $respondents = Response::all();
+        $respondents = Respondent::all();
         
         return $respondents;
     }
