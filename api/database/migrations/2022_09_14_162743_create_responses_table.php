@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('responses', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
+            $table->string('value',255);
+            $table->unsignedBigInteger('questionId');
+            $table->foreign('questionId')->references('id')->on('questions')->onDelete('cascade');
+            $table->unsignedBigInteger('respondentId');
+            $table->foreign('respondentId')->references('id')->on('respondents')->onDelete('cascade');
             $table->timestamps();
         });
     }
