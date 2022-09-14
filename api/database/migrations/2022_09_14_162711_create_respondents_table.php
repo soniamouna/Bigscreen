@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('respondents', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
+            $table->string('email')->unique();
+            $table->string('link')->unique();
             $table->timestamps();
         });
     }
