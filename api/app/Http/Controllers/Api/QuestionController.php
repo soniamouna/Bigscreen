@@ -16,7 +16,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::getAll(); //Retrieve all questions from the database 
-        if(!$questions) return response()->json(['error' => 'No questions found'], 404); //Error if there are no questions
+        if(!$questions) return response()->json(['error' => 'No questions found in database'], 404); //Error if there are no questions
         return response()->json($questions, 200); //Otherwise return a json response
     }
 
