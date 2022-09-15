@@ -120,14 +120,14 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => 'Aimeriez-vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?',
-                'type' => 'C',
-                'choices' => null,
+                'type' => 'A',
+                'choices' => json_encode(['Oui', 'Non']),
                 'created_at' => now()
             ],
             [
                 'title' => 'Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?',
-                'type' => 'C',
-                'choices' => null,
+                'type' => 'A',
+                'choices' => json_encode(['Oui', 'Non']),
                 'created_at' => now()
             ],
             [
