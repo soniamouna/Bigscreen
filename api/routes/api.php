@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\QuestionController;
+use App\Http\Controllers\Api\ResponseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('questions', QuestionController::class);
+Route::resource('responses', ResponseController::class);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
