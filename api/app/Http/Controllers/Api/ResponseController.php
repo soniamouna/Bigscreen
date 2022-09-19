@@ -31,19 +31,20 @@ class ResponseController extends Controller
     public function store(Request $request)
     {
 
-        $email=$request->email;
-        $responses=$request->responses;
+        $email=$request->email; //Get the email from the request 
+        $responses=$request->responses;//Get the responses from the request 
 
-        $questions = Question::getAll();
-        $repondentEmail=Respondent::getByEmail($email);
+        $questions = Question::getAll(); //Get all the questions
+        $repondentEmail=Respondent::getByEmail($email); // Get the respondent by the email
 
+        //Create a new Respondent if the email doesn't appear in the database respondents
         if ($repondentEmail == null) {
             $newRespondent = Respondent::create([
               'email' => $email,
               'link' => Str::uuid(),
             ]);
             $newRespondent->save();
-            foreach ($questions as $key => $question) {
+            foreach ($questions as $key => $question) { // Create a new Response foreach question 
                 Response::create([
                     'value' => $responses[$key],
                     'questionId' => $question->id,
