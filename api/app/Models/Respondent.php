@@ -25,4 +25,14 @@ class Respondent extends Model
     public static function getByLink($link) {
         return Respondent::with(['responses'])->where('link', $link)->first();
     }
+    public static function getById($id)
+    {
+        $respondent = self::where('id',$id)->first();
+        return $respondent;
+    }
+    public static function getByEmail($email)
+    {
+        $respondent = self::where('email',$email)->first();
+        return $respondent;
+    }
 }

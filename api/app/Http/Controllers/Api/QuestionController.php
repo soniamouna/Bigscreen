@@ -24,14 +24,14 @@ class QuestionController extends Controller
             if ($question->type === 'A') {
                 $JSONItem = [
                     'id' => $question->id,
-                    'libelle' => $question->libelle,
+                    'title' => $question->title,
                     'type' => $question->type,
                     'choices' => json_decode($question->choices),
                 ];
             } else {
                 $JSONItem = [
                     'id' => $question->id,
-                    'libelle' => $question->libelle,
+                    'title' => $question->title,
                     'type' => $question->type,
                 ];
             }

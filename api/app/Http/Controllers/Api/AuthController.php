@@ -27,9 +27,5 @@ class AuthController extends BaseController
         }else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']); //Otherwise send an error message
         }
-        
-           
-         
-        
     }
 }
