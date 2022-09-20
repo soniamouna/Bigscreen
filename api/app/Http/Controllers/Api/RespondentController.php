@@ -35,9 +35,14 @@ class RespondentController extends Controller
      * @param  \App\Models\Respondent  $respondent
      * @return \Illuminate\Http\Response
      */
-    public function show(Respondent $respondent)
+    public function show($link)
     {
-        //
+        $respondent=Respondent::getByLink($link);
+        return response()->json([
+            'message' => 'Good',
+            'code' => 200,
+            'respondent'=> $respondent
+        ]);
     }
 
     /**

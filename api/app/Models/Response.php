@@ -25,9 +25,9 @@ class Response extends Model
         return $responses;
     }
 
-    public static function getResponseByRespondentId($idRespondent)
+    public static function getByRespondentId($idRespondent)
     {
-        $responses = self::where('respondentId',$idRespondent)->first();
+        $responses = self::all()->where('respondentId',$idRespondent);
         return $responses;
     }
     

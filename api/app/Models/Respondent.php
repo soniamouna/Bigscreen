@@ -23,7 +23,7 @@ class Respondent extends Model
     }
 
     public static function getByLink($link) {
-        return Respondent::with(['responses'])->where('link', $link)->first();
+        return self::where('link', $link)->first();
     }
     public static function getById($id)
     {

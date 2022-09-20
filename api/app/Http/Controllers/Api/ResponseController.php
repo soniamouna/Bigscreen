@@ -53,10 +53,11 @@ class ResponseController extends Controller
             }
         }
        
-       
+        $link = $newRespondent->link;
         return response()->json([
             'message' => 'New survey created',
-            'code' => 200
+            'code' => 200,
+            'link'=> $link
         ]);
     
     }
@@ -67,9 +68,10 @@ class ResponseController extends Controller
      * @param  \App\Models\Response  $response
      * @return \Illuminate\Http\Response
      */
-    public function show(Response $response)
+    public function show($id)
     {
-        //
+        $responses=Response::getByRespondentId($id);
+        return response()->json($responses);
     }
 
     /**
