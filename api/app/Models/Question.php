@@ -22,7 +22,13 @@ class Question extends Model
 
     public static function getAll()
     {
-        $questions = Question::all();
+        $questions = self::all();
         return $questions;
+    }
+
+    public static function getById($id)
+    {
+        $question = self::where('id',$id)->first();
+        return $question;
     }
 }

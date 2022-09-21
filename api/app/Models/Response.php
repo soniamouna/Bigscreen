@@ -12,11 +12,23 @@ class Response extends Model
     protected $fillable = ['value','questionId', 'respondentId'];
 
     public function question() {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class, 'questionId');
     }
 
     public function respondent() {
-        return $this->belongsTo(Respondent::class);
+        return $this->belongsTo(Respondent::class, 'respondentId');
+    }
+
+    public static function getAll()
+    {
+        $responses = self::all();
+        return $responses;
+    }
+
+    public static function getByRespondentId($idRespondent)
+    {
+        $responses = self::all()->where('respondentId',$idRespondent);
+        return $responses;
     }
     
 
