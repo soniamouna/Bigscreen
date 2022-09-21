@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Respondent;
 use App\Models\Response;
+use ArrayObject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use PhpParser\Node\Expr\Cast\Object_;
+
 class ResponseController extends Controller
 {
     /**
@@ -17,8 +20,9 @@ class ResponseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $responses=Response::getAll(); // Get the responses'list in database
+    {   
+   
+        $responses=Response::getAll()->groupBy("respondentId");
         return response()->json($responses); 
     }
 
