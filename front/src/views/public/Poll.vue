@@ -1,8 +1,8 @@
 <script>
     import axios from 'axios';
-import FormQuestions from '../../components/public/FormQuestions.vue';
+import FormPoll from '../../components/public/FormPoll.vue';
     export default {
-    components: { FormQuestions },
+    components: { FormPoll },
     data() {
             return {
                 questions: [],
@@ -19,7 +19,7 @@ import FormQuestions from '../../components/public/FormQuestions.vue';
     </script>
     
     <template>
-        <FormQuestions :questions="this.questions"/>
+        <FormPoll :questions="this.questions"/>
     </template>
     
     

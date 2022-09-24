@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import ModalLinkResponses from './ModalLinkResponses.vue';
 export default {
     props: {
@@ -11,7 +10,6 @@ export default {
     data() {
         return {
             responses: [],
-            
         };
     },
    
