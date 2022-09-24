@@ -11,20 +11,8 @@ export default {
     data() {
         return {
             responses: [],
-            show: false,
-            link: ""
+            
         };
-    },
-    methods: {
-        async addResponses() {
-            console.log(this.responses)
-            await axios.post("http://127.0.0.1:8000/api/responses", {email:this.responses[0],responses:this.responses})
-                .then(response => {
-                    console.log(response)
-                    this.link=response.data.link
-                })
-                .catch(error => console.log(error)); 
-        },
     },
    
     components: { ModalLinkResponses }
@@ -34,7 +22,7 @@ export default {
 <template>
     <div>
             <!-- Informations about the question -->
-            <form>
+            <form >
                 <!-- Informations about the question -->
                 <div v-for="(question, i) in questions" :key="question.id">
                     <div>
@@ -66,10 +54,9 @@ export default {
                     </div>
                 </div>
 
-            
-            <!-- Display modal when we  -->
+                  
             <div>
-                <ModalLinkResponses :link="this.link"  :addResponses="this.addResponses"/>
+                <ModalLinkResponses :responses="this.responses" />
             </div>
         </form>
     </div>
