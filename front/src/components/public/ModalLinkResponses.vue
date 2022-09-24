@@ -13,7 +13,8 @@ export default {
     data() {
         return {
             show: false,
-            link: ""
+            link: "",
+            baseUrl:import.meta.env.VITE_BASE_URL
         }
     },
     methods: {
@@ -58,7 +59,7 @@ export default {
                             facile à utiliser, seul ou en famille.
                             Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
                             cette adresse: <a
-                                :href="'http://127.0.0.1:5173/reponses/' + this.link">http://127.0.0.1:5173/reponses/{{this.link}}</a>
+                                :href="this.baseUrl+'reponses/' + this.link">{{this.baseUrl+'reponses/'+this.link}}</a>
                         </p>
                     </div>
                     <div class="modal-footer">
