@@ -167,12 +167,16 @@ export default {
       
       @media screen and (min-width:300px) and (max-width:768px) {
         .sendButton{
-            border-radius: 10px;
-            background-color: #dd0297;
-            text-align: center;
-            color: white;
-            font-family: monospace;
-            font-size:x-large;
+        font-size: 36px;
+        font-family: 'Bebas Neue', cursive;
+        background: linear-gradient(45deg, transparent 5%, white 5%);
+        border: 0;
+        color: #dd0297;
+        letter-spacing: 3px;
+        box-shadow: 6px 0px 0px #dd0297;
+        outline: transparent;
+        position: relative;
+            
         }
       }
 </style>
