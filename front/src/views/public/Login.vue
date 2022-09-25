@@ -1,13 +1,15 @@
 <script>
-    export default {
+import FormLogin from '../../components/public/FormLogin.vue';
     
+        export default {
+        components: { FormLogin }
     }
-    </script>
+        </script>
+        
     
     <template>
-    
+      <FormLogin/>
     </template>
-    
     
     
     <style>
