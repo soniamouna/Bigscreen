@@ -19,11 +19,11 @@
     
     <template>
         <div >
-            <div v-for="question,i in this.questions" :key="question.id">
+            <div v-for="question in this.questions" :key="question.id">
                 <h1>Question {{question.id}} / {{questions.length}}</h1>
                 <p>{{question.title}}</p> 
-                <div>
-                    <p>{{responses[i].value}}</p>
+                <div v-for="response in this.responses" :key="response.id">
+                    <p v-if="response.questionId==question.id">{{response.value}}</p>
                 </div>
             </div>
            
