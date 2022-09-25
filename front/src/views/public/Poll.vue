@@ -19,7 +19,7 @@ import FormPoll from '../../components/public/FormPoll.vue';
     </script>
     
     <template>
-        <div class="br mt-lg-5 mb-lg-5 pb-lg-4 pt-lg-4 col-lg-11 m-auto pollContainer">
+        <div class="mt-lg-5 mb-lg-5 pb-lg-4 pt-lg-4 col-lg-11 m-auto pollContainer">
             <div class="col-lg-11 headerBackground pt-4 pb-4 m-auto mt-lg-2">
                 <h1 class="col-10 col-lg-10 pb-3 m-auto bigscreenTitle text-white font-monospace">
                     BIGSCREEN
