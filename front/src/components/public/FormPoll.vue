@@ -18,20 +18,20 @@
     </script>
     
     <template>
-      <div class="">
+      <div>
         <!-- Informations about the question -->
         <form>
           <!-- Informations about the question -->
           <div class="col-12 col-lg-12" v-for="(question, i) in questions" :key="question.id">
             <div class="formContainer  mt-4 mb-4 col-lg-6 m-auto p-lg-4 pt-4 pb-4">
-              <div class="">
+              
                 <div class="col-lg-12">
                   <h1 class="text-white font-monospace">
                     Question {{ question.id }}/{{ questions.length }}
                   </h1>
                   <p class="text-white font-monospace">{{ question.title }}</p>
                 </div>
-              </div>
+  
               <!--Choices -->
               <div class=" dotBorder pb-4 pt-4 col-12 col-lg-12 m-auto">
                 <!-- Type A -->

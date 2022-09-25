@@ -37,7 +37,7 @@ export default {
                             localStorage.removeItem('token')
                             localStorage.setItem('token', response.data.data.token)
                         }
-                        window.location.href = "/admin"
+                        window.location.href = "/administration"
 
 
                     })
