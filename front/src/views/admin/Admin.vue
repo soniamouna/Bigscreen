@@ -81,7 +81,7 @@ export default {
         <div class="col-lg-9 ">
             <AdminCharts v-if="this.page==1" />
             <AdminQuestions v-else-if="this.page==2" />
-            <AdminResponses v-else />
+            <AdminResponses v-else-if="this.page==3"  />
 
         </div>
     </div>
