@@ -27,7 +27,7 @@ const router = createRouter({
     },
     {
       path: "/administration",
-      name: "home",
+      name: "admin",
       component: () => import("../views/admin/Admin.vue"),
       beforeEnter() {
         if (localStorage.getItem("token") == null) {
