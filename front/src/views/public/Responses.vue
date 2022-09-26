@@ -61,12 +61,12 @@ export default {
         
 <template>
     <div>
-        <div class="pb-4 pt-lg-4 pollContainer">
+        <div class="mt-lg-5 mb-lg-5 pb-4 pt-lg-4 col-lg-11 m-auto pollContainer">
             <div class="col-lg-11 headerBackground pt-4 pb-4 m-auto mt-lg-2">
                 <h1 class="col-10 col-lg-10 pb-3 m-auto bigscreenTitle text-white font-monospace">
                     BIGSCREEN
                 </h1>
-                <p class="m-auto col-9 col-lg-9 titlePoll text-white font-monospace">
+                <p class="m-auto col-9 col-lg-10 titlePoll text-white font-monospace">
                     Vous trouverez ci-dessous les réponses que vous avez apportées à notre sondage le {{this.createdAt}}
                 </p>
             </div>
@@ -102,7 +102,6 @@ export default {
         
         .pollContainer{
             background-image: url(../../../img/lavaBackground2.jpg);
-            border-radius: 20px;
         }
 
         .bigscreenTitle{
