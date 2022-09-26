@@ -26,9 +26,15 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/administration',
-      name: 'admin',
-      component: Admin
+      path: "/administration",
+      name: "home",
+      component: () => import("../views/admin/Admin.vue"),
+      beforeEnter() {
+        if (localStorage.getItem("token") == null) {
+          alert("Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter")
+          return { path: "/login" };
+        }
+      },
     },
   ]
 })
