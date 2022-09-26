@@ -28,4 +28,14 @@ class AuthController extends BaseController
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']); //Otherwise send an error message
         }
     }
+
+    public function logout(Request $request)
+{
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+        'message' => 'Successfully logged out'
+    ]);
+
+}
 }
