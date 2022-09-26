@@ -16,12 +16,18 @@ export default {
         },
         async logout() {
             const token = localStorage.getItem('token')
-            
-            // await axios.post("http://127.0.0.1:8000/api/logout")
-            //     .then((response) => {
-            //         console.log(response)
-            //     })
-            //     .catch(err => console.log(err));
+
+            await axios.post("http://127.0.0.1:8000/api/logout", null, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token,
+                },
+            })
+                .then((response) => {
+                    localStorage.removeItem('token')
+                    window.location.href = "/login"
+                })
+                .catch(err => console.log(err));
         }
     },
 
