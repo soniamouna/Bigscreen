@@ -13,7 +13,18 @@ use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Cast\Object_;
 
 class ResponseController extends Controller
-{
+{   
+
+    public function getQuality()
+    {
+        $questionId = [11,12,13,14,15];
+        $answersAverage = [];
+        foreach ($questionId as $id) {
+            $averages = Response::where('questionId', $id)->get()->avg('value');
+            array_push($answersAverage, $averages);
+        }
+        return response()->json($answersAverage);
+    }
     /**
      * Display a listing of the resource.
      *mù
