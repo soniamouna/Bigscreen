@@ -25,6 +25,31 @@ class ResponseController extends Controller
         }
         return response()->json($answersAverage);
     }
+
+    public function getVrInfos($id){
+        $answers = Response::where('questionId', $id)->get();
+        $possible_answers = Question::where('id', $id)->get();
+        $options = json_decode($possible_answers[0]->choices);
+        $stats = [];
+       
+        foreach ($options as $option) {
+
+            $count = 0;
+            foreach ($answers as $answer) {
+                if ($answer->value == $option) {
+                    
+                    $count = $count += 1;
+                }
+            }
+            array_push($stats, $count);
+
+        }
+        
+        return response()->json([
+            "labels"=>$options,
+            "chartDatas"=>$stats
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *mù
