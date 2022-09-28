@@ -61,7 +61,7 @@ class ResponseController extends Controller
             $newRespondent->save();
             foreach ($questions as $key => $question) { // Create a new Response foreach question 
                 Response::create([
-                    'value' => $responses[$key],
+                    'value' => $responses[$key+1],
                     'questionId' => $question->id,
                     'respondentId' => $newRespondent->id,
                 ]);
