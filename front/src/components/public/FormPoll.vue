@@ -59,7 +59,7 @@ export default {
             <!-- Type B -->
 
             <div class="text-center" v-else-if="question.type === 'B'">
-              <input class="col-10 col-lg-8 pb-2 pb-2" placeholder="Email" type="email" v-if="question.id === 1"
+              <input class="col-10 col-lg-8 pb-2 pb-2" placeholder="exemple@gmail.com" type="email" v-if="question.id === 1"
                 maxlength="255" v-model="responses[question.id]" />
               <textarea cl class="area col-11 col-lg-11" cols="30" rows="10" maxlength="255" v-else
                 v-model="responses[question.id]" required></textarea>

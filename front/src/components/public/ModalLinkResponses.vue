@@ -27,14 +27,14 @@ export default {
       this.error = "";
       for (const question of this.questions) {
         if (this.responses[question.id] == '') {
-          this.error = "Veuillez remplir tous les champs du formulaire";
+          this.error="Veuillez remplir tous les champs du formulaire";
           this.show = false
           return false
 
         } else {
           var re = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
           if (!re.test(this.responses[1])) {
-            this.error = "The email must be a valid email !";
+            this.error="Veuillez saisir un email valide !";
             this.show = false
             return false
           }
@@ -53,7 +53,10 @@ export default {
             console.log(response)
             this.link = response.data.link
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+            this.show=false 
+            this.error=error.response.data.message
+          })
       }
     }
   }

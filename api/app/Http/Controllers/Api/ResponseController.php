@@ -46,6 +46,14 @@ class ResponseController extends Controller
     public function store(Request $request)
     {
 
+        $validate = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'responses' => 'required',
+        ]);
+        // Si les paramètres ne conviennent un message d'erreur est renvoyé
+        if ($validate->fails()) {
+            return response()->json(['message' => 'Validation failed', 'errors' => $validate->errors()], 422);
+        }
         $email=$request->email; //Get the email from the request 
         $responses=$request->responses;//Get the responses from the request 
 
@@ -53,7 +61,7 @@ class ResponseController extends Controller
         $repondentEmail=Respondent::getByEmail($email); // Get the respondent by the email
 
         //Create a new Respondent if the email doesn't appear in the database respondents
-        if ($repondentEmail == null) {
+        if ($repondentEmail === null) {
             $newRespondent = Respondent::create([
               'email' => $email,
               'link' => Str::uuid(),
@@ -66,14 +74,13 @@ class ResponseController extends Controller
                     'respondentId' => $newRespondent->id,
                 ]);
             }
+            $link = $newRespondent->link;
+            return response()->json(['message' => 'New poll and respondent created','link'=>$link],200);
+        }else{
+            return response()->json(['message'=>"Cet email existe déjà. Veuillez saisir un autre email.",'errors' => 'Respondent already exists'],409);
         }
        
-        $link = $newRespondent->link;
-        return response()->json([
-            'message' => 'New survey created',
-            'code' => 200,
-            'link'=> $link
-        ]);
+       
     
     }
 
