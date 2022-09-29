@@ -42,7 +42,7 @@ export default {
 </script>
     
 <template>
-    <div class="row col-lg-12 col-md-12 col-12">
+    <div class="m-auto row col-lg-12 col-md-12 col-12">
         <!-- Navbar Admin Vertical -->
         <div class="col-12 col-md-12 col-lg-3  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
             <nav class=" navbar-expand-lg ">
@@ -96,8 +96,8 @@ export default {
 .adminBackground{
     background-color: rgb(255, 255, 255);
     border-radius: 22px;
-    border:1px solid black;
     box-shadow: 10px 5px 5px rgb(167, 167, 167);
+    border: 1px solid black;
 
 
 }

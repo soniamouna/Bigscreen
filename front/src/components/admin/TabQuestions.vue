@@ -10,7 +10,7 @@
     </script>
     
     <template>
-        <div>
+        <div class="">
             <div class="col-lg-12 mt-4 text-center">
                 <div class="col-lg-4 m-auto">
                     <h1 class="questionTitlePage mb-5 font-orbitron">
@@ -18,16 +18,16 @@
                     </h1>
                 </div>
             </div>
-            <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto mt-4 table-bordered">
+            <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto mt-4">
                 <tr class="text-white br">
                     <th>N°</th>
                     <th>Questions</th>
                     <th>Types</th>
                 </tr>
                 <tr v-for="question in questions" :key="question.id">
-                    <td>{{question.id}}</td>
+                    <td class="break text-center">{{question.id}}</td>
                     <td>{{question.title}}</td>
-                    <td>{{question.type}}</td>
+                    <td class="break text-center">{{question.type}}</td>
                 </tr>
                 
     
@@ -38,6 +38,9 @@
     
     
     <style>
+
+        
+
     .questionTitlePage{
        
     font-weight: bolder;
