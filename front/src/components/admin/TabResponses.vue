@@ -35,9 +35,9 @@ export default {
         </tr>
 
         <tr v-for="question,i in questions" :key="question.id" class="col-lg-12">
-            <td class="text-center col-lg-2">{{question.id}}</td>
-            <td class="col-lg-8">{{question.title}}</td>
-            <td class="text-center col-lg-4">{{response[i].value}}</td>
+            <td class="break text-center col-lg-2">{{question.id}}</td>
+            <td class="break col-lg-6">{{question.title}}</td>
+            <td class="break text-center col-lg-3">{{response[i].value}}</td>
         </tr>
 
 
@@ -69,6 +69,10 @@ tr>th{
 .responsesTitlePage{
     border-bottom: 1px solid white;
     font-weight: bolder;
+}
+
+.break{
+    word-break: break-all;
 }
 
 </style>
