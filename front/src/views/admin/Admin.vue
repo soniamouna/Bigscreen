@@ -44,11 +44,10 @@ export default {
 <template>
     <div class="row col-lg-12 col-md-12 col-12">
         <!-- Navbar Admin Vertical -->
-        <div
-            class="col-12 col-md-12 col-lg-3  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
+        <div class="col-12 col-md-12 col-lg-3  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
             <nav class=" navbar-expand-lg ">
                 <div class="container-fluid ">
-                    <a class="navbar-brand" href="#">BIGSCREEN</a>
+                    <a class="text-white font-orbitron navTitle navbar-brand" href="#">BIGSCREEN</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -58,13 +57,13 @@ export default {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class=" navbar-nav me-auto  row col-lg-12">
                             <li class="nav-item" @click="display(1)">
-                                <a class="nav-link " href="#">Accueil</a>
+                                <a class="text-white nav-link " href="#">Accueil</a>
                             </li>
                             <li class="nav-item" @click="display(2)">
-                                <a class="nav-link" href="#">Questionnaire</a>
+                                <a class="text-white nav-link" href="#">Questionnaire</a>
                             </li>
                             <li class="nav-item" @click="display(3)">
-                                <a class="nav-link" href="#">Réponses</a>
+                                <a class="text-white nav-link" href="#">Réponses</a>
                             </li>
                             <button class="" @click="logout()">Déconnexion</button>
                         </ul>
@@ -78,7 +77,7 @@ export default {
 
 
         <!-- Different displays  -->
-        <div class="col-lg-9 ">
+        <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
             <AdminCharts v-if="this.page==1" />
             <AdminQuestions v-else-if="this.page==2" />
             <AdminResponses v-else-if="this.page==3"  />
@@ -94,11 +93,29 @@ export default {
     border: 1px solid red;
 }
 
+.adminBackground{
+    background-color: rgb(255, 255, 255);
+    border-radius: 22px;
+    border:1px solid black;
+    box-shadow: 10px 5px 5px rgb(167, 167, 167);
+
+
+}
+
+.navTitle{
+    font-weight: bolder;
+}
+
+
+
 @media screen and (min-width: 800px) and (max-width: 2560px) {
     .navbar {
         height: 100vh;
         display: block;
         border-right: 1px solid black;
+        box-shadow: 10px 5px 5px rgb(167, 167, 167);
+        background-image: url(../../../img/navBackground.jpg);
+        
     }
 }
 </style>

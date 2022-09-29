@@ -11,9 +11,15 @@
     
     <template>
         <div>
-       
-            <table class="table table-bordered">
-                <tr>
+            <div class="col-lg-12 mt-4 text-center">
+                <div class="col-lg-4 m-auto">
+                    <h1 class="questionTitlePage mb-5 font-orbitron">
+                        QUESTIONNAIRE
+                    </h1>
+                </div>
+            </div>
+            <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto mt-4 table-bordered">
+                <tr class="text-white br">
                     <th>N°</th>
                     <th>Questions</th>
                     <th>Types</th>
@@ -32,5 +38,13 @@
     
     
     <style>
-    
+    .questionTitlePage{
+       
+    font-weight: bolder;
+    }
+
+    .tabQuestionAppearance{
+        background-color: rgba(255, 255, 255, 0.694);
+        backdrop-filter: blur(22px);
+    }
     </style>
