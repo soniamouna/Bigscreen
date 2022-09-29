@@ -15,7 +15,8 @@ export default {
     data() {
         return {
             email: "",
-            password: ""
+            password: "",
+            error:""
         }
     },
 
@@ -41,7 +42,7 @@ export default {
 
 
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => this.error=err.response.data.data.error);
             }
         }
     },
@@ -63,24 +64,25 @@ export default {
     
 
 <template>
-    <form @submit.prevent="login" class="p-5 m-auto bg-light rounded-5 col-lg-10 row d-flex justify-content-center">
-        <h1 class="text-center">Connectez-vous !</h1>
+    <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-5 row d-flex justify-content-center">
+        <h1 class="text-center mb-4">Connectez-vous !</h1>
 
         <div class="mb-3">
-            <label for="inputEmail" class="form-label">Email</label>
+            <p class="text-danger fw-bolder" v-if="this.error!=''">{{this.error}}</p>
+            <label for="inputEmail" class="form-label fs-5">Email</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="Ex : exemple@gmail.com" v-model="this.email">
             <div class="error" v-if="v$.email.$error">
                 {{ v$.email.$errors[0].$message }}
             </div>
         </div>
         <div class="mb-4">
-            <label for="inputPassword" class="form-label">Password</label>
+            <label for="inputPassword" class="form-label fs-5">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Entrez votre mot de passe" v-model="this.password">
             <div class="error" v-if="v$.password.$error">
                 {{ v$.password.$errors[0].$message }}
             </div>
         </div>
-        <button type="submit" class="btn btn-primary col-lg-4 m-auto">Se connecter</button>
+        <button type="submit" class=" btnLogin col-10 col-md-5 col-lg-8 col-xl-10  col-xxl-8 p-2 m-auto fs-5 fw-bolder">Se connecter</button>
     </form>
 </template>
 
@@ -88,5 +90,26 @@ export default {
 <style>
     .error{
         color:red
+    }
+
+    .bgForm{
+        background: rgba(255, 255, 255, 0.208);
+        box-shadow: 0px 5px 5px rgba(104, 104, 104, 0.484);
+    }
+
+    .btnLogin{
+        border-radius: 10px;
+        color: rgba(157, 102, 244, 1);  
+        background: white;
+        border: transparent;
+        box-shadow: 2px 5px 5px rgba(104, 104, 104, 0.358);
+
+
+    }
+    .btnLogin:hover{
+        color: white;
+        background: transparent;
+        border: 1px solid white;
+        
     }
 </style>
