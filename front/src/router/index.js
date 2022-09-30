@@ -38,6 +38,7 @@ const router = createRouter({
     {
       path: "/administration/questionnaire",
       name: "adminQuestions",
+       
       component: () => import("../views/admin/AdminQuestions.vue"),
       beforeEnter() {
         if (localStorage.getItem("token") == null) {
