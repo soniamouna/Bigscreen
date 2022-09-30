@@ -21,7 +21,7 @@ export default {
 </script>
     
 <template>
-    <div class=" row col-lg-12 col-md-12 col-12">
+    <div class=" row m-auto col-12 col-md-12 col-lg-12 ">
         <NavbarAdmin/>
         <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
             <TabQuestions :questions="this.questions" />

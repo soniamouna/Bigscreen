@@ -12,11 +12,6 @@
     <template>
         <div >
             <div class="col-lg-12 mt-4 text-center">
-                <div class="col-lg-4 m-auto">
-                    <h1 class="questionTitlePage mb-5 font-orbitron">
-                        QUESTIONNAIRE
-                    </h1>
-                </div>
             </div>
             <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto mt-4">
                 <tr class="text-white">

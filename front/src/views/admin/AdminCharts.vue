@@ -10,30 +10,25 @@ export default {
 </script>
 
 <template>
-    <div class=" row col-lg-12 col-md-12 col-12">
+    <div class=" m-auto row col-lg-12 col-md-12 col-12">
     <NavbarAdmin/>
-    <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
-        <div class="col-lg-12">
-            <div class="col-lg-12 m-auto">
-                <div class="text-center mb-4">
-                    <h1 class="m-auto col-lg-2 titleWelcome font-monospace">
-                        ACCUEIL
-                    </h1>
-                </div>
-                <div class="m-auto pb-4 col-lg-9 row">
-                    <div class="m-auto chartsContainer p-4 col-lg-5">
+    <div class="br col-lg-9 col-xl-8 p-4 m-auto ">
+        <div class="col-lg-12 col-xl-12">
+            <div class="br col-lg-12 col-xl-12 m-auto">
+                <div class="br m-auto pb-4 col-lg-12 col-xl-12 row">
+                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                         <PieCharts6/>
                     </div>
-                    <div class="m-auto chartsContainer p-4 col-lg-5">
+                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                         <PieCharts7/>
                     </div>
         
                 </div>
-                <div class="m-auto col-lg-9 row"> 
-                    <div class="m-auto chartsContainer p-4 col-lg-5">   
+                <div class="m-auto col-lg-12 col-xl-12 row"> 
+                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">   
                         <PieCharts10/>
                     </div>
-                    <div class="m-auto chartsContainer p-4 col-lg-5">
+                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                         <RadarCharts />
                     </div>
                 </div>
@@ -47,15 +42,7 @@ export default {
 
 
 <style>
-    .adminBackground{
-        background-color: rgb(255, 255, 255);
-        border-radius: 22px;
-        box-shadow: 10px 5px 5px rgb(167, 167, 167);
-        border: 1px solid black;
     
-    
-    }
-
     .chartsContainer{
         border: 1px solid black;
         border-radius: 22px;
