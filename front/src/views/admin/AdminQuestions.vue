@@ -23,7 +23,7 @@ export default {
 <template>
     <div class=" row m-auto col-12 col-md-12 col-lg-12 ">
         <NavbarAdmin/>
-        <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
+        <div class="col-lg-8 p-4 m-auto mt-5 mb-4 m-auto">
             <TabQuestions :questions="this.questions" />
         </div>
     </div>

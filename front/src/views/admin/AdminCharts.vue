@@ -12,10 +12,10 @@ export default {
 <template>
     <div class=" m-auto row col-lg-12 col-md-12 col-12">
     <NavbarAdmin/>
-    <div class="br col-lg-9 col-xl-8 p-4 m-auto ">
+    <div class="col-lg-9 col-xl-8 p-4 m-auto ">
         <div class="col-lg-12 col-xl-12">
-            <div class="br col-lg-12 col-xl-12 m-auto">
-                <div class="br m-auto pb-4 col-lg-12 col-xl-12 row">
+            <div class="col-lg-12 col-xl-12 m-auto">
+                <div class="m-auto pb-4 col-lg-12 col-xl-12 row">
                     <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                         <PieCharts6/>
                     </div>

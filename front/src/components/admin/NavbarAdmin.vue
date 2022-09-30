@@ -52,7 +52,7 @@ export default {
                         <li class="nav-item" >
                             <a class="text-white nav-link" href="/administration/reponses">Réponses</a>
                         </li>
-                        <button class="br btnDeco col-lg-6 m-auto p-1" @click="logout()">Déconnexion</button>
+                        <button class="btnDeco col-lg-6 m-auto p-1" @click="logout()">Déconnexion</button>
                     </ul>
 
                 </div>

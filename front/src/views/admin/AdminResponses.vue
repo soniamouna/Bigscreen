@@ -42,9 +42,9 @@ export default {
 </script>
     
 <template>
-    <div class=" row col-lg-12 col-md-12 col-12">
+    <div class="row m-auto col-lg-12 col-md-12 col-12">
         <NavbarAdmin/>
-    <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
+    <div class="col-lg-8 p-4 mt-5 mb-4 m-auto ">
         <TabResponses :questions="this.questions" :responses="this.responses" />
     </div>
 </div>
