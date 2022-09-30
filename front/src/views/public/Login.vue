@@ -22,10 +22,7 @@ export default {
     
     
 <style>
-.br {
-  border: 1px solid red;
 
-}
 
 .bgLogin {
   height: 100vh;

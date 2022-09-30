@@ -86,9 +86,7 @@ export default {
 <style>
 @media screen and (min-width: 800px) and (max-width: 2560px) {
 
-  .br {
-    border: 1px solid red;
-  }
+
 
   .formContainer {
     border-radius: 20px;
@@ -113,9 +111,7 @@ export default {
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
 
-  .br {
-    border: 1px solid red;
-  }
+
 
 
   .titleQuestion {

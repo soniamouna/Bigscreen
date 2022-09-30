@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import TabResponses from '../../components/admin/TabResponses.vue';
+import NavbarAdmin from '../../components/admin/NavbarAdmin.vue';
 
 export default {
     data() {
@@ -36,12 +37,17 @@ export default {
 
 
     },
-    components: { TabResponses }
+    components: { TabResponses, NavbarAdmin }
 }
 </script>
     
 <template>
+    <div class=" row col-lg-12 col-md-12 col-12">
+        <NavbarAdmin/>
+    <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
         <TabResponses :questions="this.questions" :responses="this.responses" />
+    </div>
+</div>
 
     
 </template>
@@ -49,5 +55,12 @@ export default {
     
     
 <style>
-
+    .adminBackground{
+        background-color: rgb(255, 255, 255);
+        border-radius: 22px;
+        box-shadow: 10px 5px 5px rgb(167, 167, 167);
+        border: 1px solid black;
+    
+    
+    }
 </style>

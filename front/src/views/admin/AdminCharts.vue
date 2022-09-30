@@ -3,44 +3,58 @@ import RadarCharts from '../../components/admin/RadarCharts.vue';
 import PieCharts6 from '../../components/admin/PieCharts6.vue';
 import PieCharts7 from '../../components/admin/PieCharts7.vue';
 import PieCharts10 from '../../components/admin/PieCharts10.vue';
+import NavbarAdmin from '../../components/admin/NavbarAdmin.vue';
 export default {
-    components: { RadarCharts, PieCharts6, PieCharts7, PieCharts10 }
+    components: { RadarCharts, PieCharts6, PieCharts7, PieCharts10, NavbarAdmin }
 }
 </script>
 
 <template>
-    <div class="col-lg-12">
-        <div class="col-lg-12 m-auto">
-            <div class="text-center mb-4">
-                <h1 class="m-auto col-lg-2 titleWelcome font-monospace">
-                    ACCUEIL
-                </h1>
+    <div class=" row col-lg-12 col-md-12 col-12">
+    <NavbarAdmin/>
+    <div class="col-lg-8 p-4 m-auto mt-5 mb-4 adminBackground ">
+        <div class="col-lg-12">
+            <div class="col-lg-12 m-auto">
+                <div class="text-center mb-4">
+                    <h1 class="m-auto col-lg-2 titleWelcome font-monospace">
+                        ACCUEIL
+                    </h1>
+                </div>
+                <div class="m-auto pb-4 col-lg-9 row">
+                    <div class="m-auto chartsContainer p-4 col-lg-5">
+                        <PieCharts6/>
+                    </div>
+                    <div class="m-auto chartsContainer p-4 col-lg-5">
+                        <PieCharts7/>
+                    </div>
+        
+                </div>
+                <div class="m-auto col-lg-9 row"> 
+                    <div class="m-auto chartsContainer p-4 col-lg-5">   
+                        <PieCharts10/>
+                    </div>
+                    <div class="m-auto chartsContainer p-4 col-lg-5">
+                        <RadarCharts />
+                    </div>
+                </div>
             </div>
-            <div class="m-auto pb-4 col-lg-9 row">
-                <div class="m-auto chartsContainer p-4 col-lg-5">
-                    <PieCharts6/>
-                </div>
-                <div class="m-auto chartsContainer p-4 col-lg-5">
-                    <PieCharts7/>
-                </div>
     
-            </div>
-            <div class="m-auto col-lg-9 row"> 
-                <div class="m-auto chartsContainer p-4 col-lg-5">   
-                    <PieCharts10/>
-                </div>
-                <div class="m-auto chartsContainer p-4 col-lg-5">
-                    <RadarCharts />
-                </div>
-            </div>
         </div>
-
     </div>
+</div>
 </template>
 
 
 
 <style>
+    .adminBackground{
+        background-color: rgb(255, 255, 255);
+        border-radius: 22px;
+        box-shadow: 10px 5px 5px rgb(167, 167, 167);
+        border: 1px solid black;
+    
+    
+    }
 
     .chartsContainer{
         border: 1px solid black;
