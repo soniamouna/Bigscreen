@@ -64,25 +64,24 @@ export default {
     
 
 <template>
-    <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-5 row d-flex justify-content-center">
-        <h1 class="text-center mb-4">Connectez-vous !</h1>
+    <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center">
 
         <div class="mb-3">
             <p class="text-danger fw-bolder" v-if="this.error!=''">{{this.error}}</p>
-            <label for="inputEmail" class="form-label fs-5">Email</label>
+            <label for="inputEmail" class="form-label text-white font-monospace fs-5">Email</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="Ex : exemple@gmail.com" v-model="this.email">
             <div class="error" v-if="v$.email.$error">
                 {{ v$.email.$errors[0].$message }}
             </div>
         </div>
         <div class="mb-4">
-            <label for="inputPassword" class="form-label fs-5">Password</label>
+            <label for="inputPassword" class="form-label text-white font-monospace fs-5">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Entrez votre mot de passe" v-model="this.password">
             <div class="error" v-if="v$.password.$error">
                 {{ v$.password.$errors[0].$message }}
             </div>
         </div>
-        <button type="submit" class=" btnLogin col-10 col-md-5 col-lg-8 col-xl-10  col-xxl-8 p-2 m-auto fs-5 fw-bolder">Se connecter</button>
+        <button type="submit" class=" btnLogin col-10 col-md-5 col-lg-8 col-xl-10 font-monospace col-xxl-8 p-2 m-auto fs-5 fw-bolder">Se connecter</button>
     </form>
 </template>
 
@@ -107,9 +106,7 @@ export default {
 
     }
     .btnLogin:hover{
-        color: white;
-        background: transparent;
-        border: 1px solid white;
+        outline: 5px solid rgb(126, 73, 212);
         
     }
 </style>
