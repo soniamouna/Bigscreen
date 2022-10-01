@@ -46,12 +46,7 @@ export default {
       <!-- Informations about the question -->
       <div class="col-12 col-lg-12" v-for="question in this.questions" :key="question.id">
         <div class="formContainer mt-4 mb-4 col-lg-6 m-auto p-lg-4 pt-4 pb-4">
-          <!-- <div class="titleQuestion col-lg-12">
-            <h1 class="text-white font-monospace">
-              Question {{ question.id }}/{{ this.questions.length }}
-            </h1>
-            <p class="statement text-white font-monospace">{{ question.title }}</p>
-          </div> -->
+          <!-- Informations about the question -->
           <FormQuestionInfos :id="question.id" :length="this.questions.length" :title="question.title" />
           <!--Choices -->
           <div class="dotBorder pb-4 pt-4 col-12 col-lg-12 m-auto">

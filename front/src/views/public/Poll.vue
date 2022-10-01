@@ -28,6 +28,7 @@ import FormPoll from '../../components/public/FormPoll.vue';
                     Merci de répondre à toutes les questions et de valider le formulaire en bas de page.
                 </p>
             </div>
+            <p class="text-center m-auto col-9 col-lg-9 fst-italic text-white font-monospace "> Tous les champs sont obligatoires </p>
             <FormPoll />
         </div>
     </template>
