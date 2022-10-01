@@ -43,8 +43,8 @@ export default {
     
 <template>
     <div class="row m-auto col-lg-12 col-md-12 col-12">
-        <NavbarAdmin/>
-    <div class="scrollPage col-lg-8 p-4  m-auto ">
+        <NavbarAdmin page="responses"/>
+        <div class="scrollPage col-lg-9 p-4 m-auto">
         <TabResponses :questions="this.questions" :responses="this.responses" />
     </div>
 </div>

@@ -11,7 +11,7 @@ export default {
 
 <template>
     <div class=" m-auto row col-lg-12 col-md-12 col-12">
-    <NavbarAdmin/>
+    <NavbarAdmin page="home"/>
     <div class="scrollPage col-lg-9 col-xl-9 p-4 m-auto ">
         <div class="col-lg-12 col-xl-12">
             <div class="col-lg-12 col-xl-12 m-auto">

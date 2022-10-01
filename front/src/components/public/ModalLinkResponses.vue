@@ -109,7 +109,7 @@ export default {
 </template>
     
 <style>
-@media screen and (min-width: 800px) and (max-width: 2560px) {
+@media screen and (min-width: 800px) and (max-width: 4000px) {
 
   .sendButton,
   .sendButton::after {

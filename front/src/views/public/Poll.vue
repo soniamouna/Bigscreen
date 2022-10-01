@@ -38,8 +38,13 @@ import FormPoll from '../../components/public/FormPoll.vue';
         
         @media screen and (min-width: 1900px) and (max-width: 4000px) {
             .pollContainer{
-                background-image: url(../../../img/lavaBackground49inchscreen.jpg);
+                background-image: url(../../../img/lavaBackground2.jpg);
                 border-radius: 20px;
+                background-size: cover;
+            }
+
+            .titlePoll{
+                font-size: 30px;
             }
     
         }

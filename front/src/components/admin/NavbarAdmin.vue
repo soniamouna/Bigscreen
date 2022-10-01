@@ -2,6 +2,11 @@
 import axios from 'axios';
 
 export default {
+    props: {
+            page: {
+                type: String
+            }
+        },
     methods: {
     
         async logout() {
@@ -32,27 +37,34 @@ export default {
 
 <template>
     <div class="col-12 col-md-12 col-lg-3  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
-        <nav class=" navbar-expand-lg ">
-            <div class=" container-fluid ">
-                <a class="m-auto text-white font-orbitron navTitle navbar-brand" href="#">BIGSCREEN</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav class="col-12 m-auto navbar-expand-lg ">
+            <div class="col-12 container-fluid ">
+                <div class="row m-auto col-12">
+                    <div class="p-2 col-9 col-lg-12">
+                        <a class="col-12 col-lg-12 m-auto text-white text-center font-monospace navTitle navbar-brand " href="#">BIGSCREEN</a>
+                    </div>
+                    <div class="text-center toogleContainer col-3 col-lg-6">
+                        <button class="border-light border-2 navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon navbar-dark "></span>
+                        </button>
+                    </div>
+                </div>
+                
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="text-center collapse navbar-collapse pt-2" id="navbarSupportedContent">
                     <ul class=" navbar-nav m-auto  row col-lg-12">
                         <li class="nav-item">
-                            <a class="text-white nav-link " href="/administration">Accueil</a>
+                            <a :class="this.page=='home'?'activeLink':'text-white nav-link'" href="/administration">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="text-white nav-link" href="/administration/questionnaire">Questionnaire</a>
+                            <a :class="this.page=='questions'?'activeLink':'text-white nav-link' "  href="/administration/questionnaire">Questionnaire</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="text-white nav-link" href="/administration/reponses">Réponses</a>
+                            <a :class="this.page=='responses'?'activeLink':'text-white nav-link'" href="/administration/reponses">Réponses</a>
                         </li>
-                        <button class="btnDeco col-lg-6 m-auto p-1" @click="logout()">Déconnexion</button>
+                        <button class="mt-2 btnDeco col-6 col-md-4 col-lg-6 m-auto p-1" @click="logout()">Déconnexion</button>
                     </ul>
 
                 </div>
@@ -66,9 +78,21 @@ export default {
 
 
 <style>
+
    
-    
-   
+   .nav-link:hover{
+    font-weight: bold;
+   }
+    .activeLink{
+        font-weight: bold;
+        color:white;
+    }
+
+    .activeLink:hover{
+        font-weight: bold;
+        color: rgb(130, 134, 255);
+    }
+  
     .btnDeco{
         border-radius: 8px;
         background: rgb(130, 134, 255);
@@ -94,8 +118,13 @@ export default {
             display: block;
             border-right: 1px solid black;
             background-image: url(../../../img/navBackground.jpg);
+            background-size: cover;
             
             
+        }
+
+        .toogleContainer{
+           
         }
         
     }
@@ -105,7 +134,7 @@ export default {
         .navbar {
           
             background-image: url(../../../img/navBackground.jpg);
-
+            background-size: cover;
             
         }
         
