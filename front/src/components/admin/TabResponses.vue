@@ -19,8 +19,6 @@ export default {
     
 <template>
 <div class="responsesBackground ">
-    <div class="col-lg-12 mt-4 text-center"> 
-    </div>
     <table class="tabResponsesAppearance container mb-4 col-lg-12 m-auto mt-4 " v-for="response in responses" :key="response.id">
         <tr class="text-white text-center">
             <th>N°</th>

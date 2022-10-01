@@ -12,7 +12,7 @@ export default {
 <template>
     <div class=" m-auto row col-lg-12 col-md-12 col-12">
     <NavbarAdmin/>
-    <div class="col-lg-9 col-xl-8 p-4 m-auto ">
+    <div class="scrollPage col-lg-9 col-xl-9 p-4 m-auto ">
         <div class="col-lg-12 col-xl-12">
             <div class="col-lg-12 col-xl-12 m-auto">
                 <div class="m-auto pb-4 col-lg-12 col-xl-12 row">
@@ -42,7 +42,12 @@ export default {
 
 
 <style>
-    
+    .scrollPage{
+        height: 100vh;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+       
+    }
     .chartsContainer{
         border: 1px solid black;
         border-radius: 22px;

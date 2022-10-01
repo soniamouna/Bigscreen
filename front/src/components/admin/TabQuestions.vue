@@ -11,9 +11,8 @@
     
     <template>
         <div >
-            <div class="col-lg-12 mt-4 text-center">
-            </div>
-            <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto mt-4">
+            
+            <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto">
                 <tr class="text-white">
                     <th>N°</th>
                     <th>Questions</th>

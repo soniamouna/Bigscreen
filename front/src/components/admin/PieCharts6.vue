@@ -40,6 +40,9 @@ export default {
                     'rgb(255, 335, 86)'
                 ],
                 hoverOffset: 4
+            }],
+            options:[{
+                responsive:true
             }]
         };
 

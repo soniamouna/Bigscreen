@@ -46,6 +46,9 @@ export default {
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }],
+            options:[{
+                responsive:true
             }]
         };
 

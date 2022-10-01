@@ -93,7 +93,6 @@ export default {
             height: 100vh;
             display: block;
             border-right: 1px solid black;
-            box-shadow: 10px 5px 5px rgb(167, 167, 167);
             background-image: url(../../../img/navBackground.jpg);
             
             

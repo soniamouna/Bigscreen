@@ -38,7 +38,10 @@
                         'rgb(255, 205, 86)'
                     ],
                     hoverOffset: 4
-                }]
+                }],
+                options:[{
+                responsive:true
+            }]
             };
     
             const myChart7 = new Chart(ctx, {

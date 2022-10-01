@@ -44,7 +44,7 @@ export default {
 <template>
     <div class="row m-auto col-lg-12 col-md-12 col-12">
         <NavbarAdmin/>
-    <div class="col-lg-8 p-4 mt-5 mb-4 m-auto ">
+    <div class="scrollPage col-lg-8 p-4  m-auto ">
         <TabResponses :questions="this.questions" :responses="this.responses" />
     </div>
 </div>
@@ -62,5 +62,11 @@ export default {
         border: 1px solid black;
     
     
+    }
+    .scrollPage{
+        height: 100vh;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+       
     }
 </style>
