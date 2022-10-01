@@ -11,52 +11,51 @@ export default {
 
 <template>
     <div class=" m-auto row col-lg-12 col-md-12 col-12">
-    <NavbarAdmin page="home"/>
-    <div class="scrollPage col-lg-9 col-xl-9 p-4 m-auto ">
-        <div class="col-lg-12 col-xl-12">
-            <div class="col-lg-12 col-xl-12 m-auto">
-                <div class="m-auto pb-4 col-lg-12 col-xl-12 row">
-                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                        <PieCharts6/>
+        <NavbarAdmin page="home" />
+        <div class="scrollPage col-lg-9 col-xl-9 p-4 m-auto ">
+            <div class="col-lg-12 col-xl-12">
+                <div class="col-lg-12 col-xl-12 m-auto">
+                    <div class="m-auto pb-4 col-lg-12 col-xl-12 row">
+                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
+                            <PieCharts6 />
+                        </div>
+                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
+                            <PieCharts7 />
+                        </div>
+
                     </div>
-                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                        <PieCharts7/>
+                    <div class="m-auto col-lg-12 col-xl-12 row">
+                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
+                            <PieCharts10 />
+                        </div>
+                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
+                            <RadarCharts />
+                        </div>
                     </div>
-        
                 </div>
-                <div class="m-auto col-lg-12 col-xl-12 row"> 
-                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">   
-                        <PieCharts10/>
-                    </div>
-                    <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                        <RadarCharts />
-                    </div>
-                </div>
+
             </div>
-    
         </div>
     </div>
-</div>
 </template>
 
 
 
 <style>
-    .scrollPage{
-        height: 100vh;
-        overflow-y: scroll;
-        scrollbar-width: thin;
-       
-    }
-    .chartsContainer{
-        border: 1px solid black;
-        border-radius: 22px;
-    }
+.scrollPage {
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 
-    .titleWelcome{
-        font-weight: bolder;
-        border-bottom: 1px solid black;
-    }
-    
+}
 
+.chartsContainer {
+    border: 1px solid black;
+    border-radius: 22px;
+}
+
+.titleWelcome {
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+}
 </style>

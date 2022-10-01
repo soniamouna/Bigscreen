@@ -6,7 +6,8 @@
         data() {
             return {
                 labels: [],
-                chartDatas: []
+                chartDatas: [],
+                error:""
             }
         },
         async mounted() {
@@ -23,7 +24,7 @@
                     this.chartDatas = response.data.chartDatas
     
                 })
-                .catch(err => console.log(err));
+                .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
     
             const ctx = document.getElementById('myChart7');
     
@@ -62,7 +63,9 @@
     <template>
     
         <div>
-            <canvas id="myChart7" width="400" height="400"></canvas>
+            <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+
+            <canvas  v-else id="myChart7" width="400" height="400"></canvas>
     
         </div>
     

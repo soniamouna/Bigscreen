@@ -8,18 +8,18 @@ export default {
         return {
             questions: [],
             responses: [],
+            error:""
         };
     },
     mounted() {
         const token = localStorage.getItem("token")
         axios.get("http://127.0.0.1:8000/api/questions")
         .then((response) => {
-                console.log(response.data);
                 this.questions = response.data
 
 
             })
-            .catch(err => console.log(err));
+            .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
         axios.get("http://127.0.0.1:8000/api/responses", {
                 headers: {
@@ -28,10 +28,9 @@ export default {
                 },
             })
             .then((res) => {
-                console.log(res.data);
                 this.responses = res.data;
             })
-            .catch(err => console.log(err));
+            .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
 
 
@@ -45,7 +44,7 @@ export default {
     <div class="row m-auto col-lg-12 col-md-12 col-12">
         <NavbarAdmin page="responses"/>
         <div class="scrollPage col-lg-9 p-4 m-auto">
-        <TabResponses :questions="this.questions" :responses="this.responses" />
+        <TabResponses :questions="this.questions" :responses="this.responses" :error="this.error"/>
     </div>
 </div>
 

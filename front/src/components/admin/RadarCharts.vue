@@ -5,7 +5,9 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            averages:[]
+            averages:[],
+            error:""
+
         }
     },
     methods: {
@@ -24,7 +26,7 @@ export default {
                     this.averages=response.data
                     
             })
-            .catch(err => console.log(err));
+            .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
        
         const ctx = document.getElementById('myRadarChart');
@@ -79,7 +81,9 @@ export default {
 <template>
 
     <div>
-        <canvas id="myRadarChart" width="400" height="400"></canvas>
+        <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+
+        <canvas v-else id="myRadarChart" width="400" height="400"></canvas>
     </div>
 
 </template>

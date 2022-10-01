@@ -7,6 +7,7 @@ export default {
     return {
       questions: [],
       responses: [],
+      error:""
 
     };
   },
@@ -19,7 +20,11 @@ export default {
           this.responses[element.id] = ""
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if(err.response.status==500){
+          this.error="Une erreur est survenue. Veuillez recharger la page ultérieurement."
+        }
+      });
   },
   components: { ModalLinkResponses },
 
@@ -28,12 +33,13 @@ export default {
     
 <template>
   <div id="form">
+    <p v-if="this.error!==''" class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto">{{this.error}}</p>
+
     <!-- Informations about the question -->
     <form>
       <!-- Informations about the question -->
       <div class=" col-12 col-lg-12" v-for="question in this.questions" :key="question.id">
         <div class="formContainer  mt-4 mb-4 col-lg-6 m-auto p-lg-4 pt-4 pb-4">
-
           <div class="titleQuestion col-lg-12">
             <h1 class="text-white font-monospace">
               Question {{ question.id }}/{{ this.questions.length }}
@@ -76,7 +82,7 @@ export default {
         </div>
       </div>
 
-      <div>
+      <div v-if="this.error==''">
         <ModalLinkResponses :questions="this.questions" :responses="this.responses" />
       </div>
     </form>
@@ -84,6 +90,9 @@ export default {
 </template>
     
 <style>
+  .errorMsg{
+    border-radius: 10px;
+  }
 @media screen and (min-width: 800px) and (max-width: 4000px) {
 
   .emailForm{

@@ -4,6 +4,9 @@
             questions: {
                 type: Array,
                 default: () => []
+            },
+            error:{
+                type:String,
             }
         },
     }
@@ -11,8 +14,9 @@
     
     <template>
         <div >
-            
-            <table class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto">
+            <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+
+            <table v-else class="table tabQuestionAppearance container mb-4 col-lg-12 m-auto">
                 <tr class="text-white">
                     <th>N°</th>
                     <th>Questions</th>

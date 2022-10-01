@@ -44,11 +44,7 @@
     
     
     <style>
-    
-        .br{
-            border: 1px solid red;
-        }
-        
+
         .formContainer {
           border-radius: 20px;
           background-color: rgba(115, 115, 115, 0.498);
@@ -68,12 +64,7 @@
             font-size: large;
         }
         @media screen and (min-width: 300px) and (max-width: 768px) {
-                    
-            .br{
-                border: 1px solid red;
-            }
             
-
             .titleQuestion{
                 text-align: center;
             }

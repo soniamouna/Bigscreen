@@ -9,6 +9,9 @@ export default {
             type: Array,
             default: () => []
         },
+        error:{
+                type:String,
+            }
 
     },
 
@@ -19,7 +22,9 @@ export default {
     
 <template>
 <div class="responsesBackground ">
-    <table class="tabResponsesAppearance container mb-4 col-lg-12 m-auto mt-4 " v-for="response in responses" :key="response.id">
+    <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+
+    <table v-else class="tabResponsesAppearance container mb-4 col-lg-12 m-auto mt-4 " v-for="response in responses" :key="response.id">
         <tr class="text-white text-center">
             <th>N°</th>
             <th>Questions</th>
