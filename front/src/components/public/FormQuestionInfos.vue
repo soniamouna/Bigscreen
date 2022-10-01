@@ -9,7 +9,7 @@ export default {
             type: String,
         },
         length: {
-            type: String,
+            type: Number,
         },
 
 
