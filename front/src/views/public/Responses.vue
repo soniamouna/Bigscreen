@@ -47,7 +47,7 @@ export default {
         axios
           .get("http://127.0.0.1:8000/api/responses/" + idRespondent)
           .then((res) => {
-            this.responses = res.data;
+            this.responses = res.data.responses;
           })
           .catch((err) => console.log(err));
       })

@@ -121,7 +121,7 @@ class ResponseController extends Controller
             ], 401);
         } else {
             return response()->json([
-                'response' => $responses
+                'responses' => $responses
             ], 200);
         }
     }
