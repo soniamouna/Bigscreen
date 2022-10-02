@@ -33,6 +33,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('quality', [ResponseController::class, 'getQuality']);
     Route::get('infosVR/{id}', [ResponseController::class, 'getVrInfos']);
-
-
 });
