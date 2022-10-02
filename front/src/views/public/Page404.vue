@@ -33,13 +33,4 @@ export default {
     color: white;
 }
 
-@media screen and (min-width: 300px) and (max-width: 768px) {
-    .navbar {
-      
-        background-image: url(../../../img/bg-404Page.jpg);
-        
-        
-    }
-    
-}
 </style>
