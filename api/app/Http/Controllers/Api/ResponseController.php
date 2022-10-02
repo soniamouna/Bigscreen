@@ -12,11 +12,21 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Cast\Object_;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ResponseController extends Controller
 {
 
     public function getQuality()
     {
+        $allResponses=Response::getAll();
+
+        
+        if(count($allResponses)==0){
+            return response()->json([
+                "message" => "Aucun sondage enregistré"
+            ],204);
+        }else{
         $questionId = [11, 12, 13, 14, 15];
         $answersAverage = [];
         foreach ($questionId as $id) {
@@ -25,30 +35,42 @@ class ResponseController extends Controller
         }
         return response()->json($answersAverage);
     }
+    }
 
     public function getVrInfos($id)
     {
-        $answers = Response::where('questionId', $id)->get();
-        $possible_answers = Question::where('id', $id)->get();
-        $options = json_decode($possible_answers[0]->choices);
-        $stats = [];
+        $allResponses=Response::getAll();
 
-        foreach ($options as $option) {
-
-            $count = 0;
-            foreach ($answers as $answer) {
-                if ($answer->value == $option) {
-
-                    $count = $count += 1;
+        
+        if(count($allResponses)==0){
+            return response()->json([
+                "message" => "Responses empty"
+            ],204);
+        }else{
+            $responses = Response::where('questionId', $id)->get();
+            $possible_responses = Question::where('id', $id)->get();
+            $options = json_decode($possible_responses[0]->choices);
+            $stats = [];
+    
+            foreach ($options as $option) {
+    
+                $count = 0;
+                foreach ($responses as $response) {
+                    if ($response->value == $option) {
+    
+                        $count = $count += 1;
+                    }
                 }
+                array_push($stats, $count);
             }
-            array_push($stats, $count);
+    
+            return response()->json([
+                "test"=>$allResponses,
+                "labels" => $options,
+                "chartDatas" => $stats
+            ]);
         }
-
-        return response()->json([
-            "labels" => $options,
-            "chartDatas" => $stats
-        ]);
+        
     }
     /**
      * Display a listing of the resource.
@@ -59,7 +81,13 @@ class ResponseController extends Controller
     {
 
         $responses = Response::getAll()->groupBy("respondentId");
+        if(count($responses)==0){
+            return response()->json([
+                "message" => "Aucun sondage enregistré"
+            ],204);
+        }else{
         return response()->json($responses);
+    }
     }
 
     /**

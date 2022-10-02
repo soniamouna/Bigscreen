@@ -23,7 +23,9 @@ export default {
     }
   },
   methods: {
-
+    reloadPage() {
+      window.location.reload();
+    },
     checkResponses() {
       this.error = "";
       for (const question of this.questions) {
@@ -98,7 +100,7 @@ export default {
             <p v-else>{{this.error}}</p>
           </div>
           <div class="modal-footer">
-            <button @click.prevent type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button @click="reloadPage" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>

@@ -1,78 +1,85 @@
 
 <script>
-    import Chart from 'chart.js/auto';
-    import axios from 'axios';
-    export default {
-        data() {
-            return {
-                labels: [],
-                chartDatas: [],
-                error:"",
-                apiURL:import.meta.env.VITE_BASE_API
-            }
-        },
-        async mounted() {
-            const token = localStorage.getItem("token")
-    
-            await axios.get(this.apiURL+"infosVR/7", {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-            })
-                .then((response) => {
-                    this.labels = response.data.labels
-                    this.chartDatas = response.data.chartDatas
-    
-                })
-                .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
-    
-            const ctx = document.getElementById('myChart7');
-    
-            const data = {
-                labels: this.labels,
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: this.chartDatas,
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                    ],
-                    hoverOffset: 4
-                }],
-                options:[{
-                responsive:true
-            }]
-            };
-    
-            const myChart7 = new Chart(ctx, {
-                type: 'doughnut',
-                data: data,
-            });
-            
-    
-            return myChart7;
-    
-        }
-    }
-    
-    
-    </script>
-        
-        
-    <template>
-    
-        <div>
-            <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+import Chart from 'chart.js/auto';
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            labels: [],
+            chartDatas: [],
+            error: "",
+            apiURL: import.meta.env.VITE_BASE_API,
+            message: ""
 
-            <canvas  v-else id="myChart7" width="400" height="400"></canvas>
-    
-        </div>
-    
-    </template>
+        }
+    },
+    async mounted() {
+        const token = localStorage.getItem("token")
+
+        await axios.get(this.apiURL + "infosVR/7", {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+        })
+            .then((response) => {
+                if (response.status == 204) {
+                    this.message = "Aucun sondage enregistré"
+                } else {
+                    this.labels = response.data.labels;
+                    this.chartDatas = response.data.chartDatas;
+                }
+
+            })
+            .catch((err) => this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.");
+
+        const ctx = document.getElementById('myChart7');
+
+        const data = {
+            labels: this.labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: this.chartDatas,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }],
+            options: [{
+                responsive: true
+            }]
+        };
+
+        const myChart7 = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+        });
+
+
+        return myChart7;
+
+    }
+}
+
+
+</script>
         
         
-    <style>
-    
-    </style>
+<template>
+
+    <div>
+        <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+        <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
+
+        <canvas v-else id="myChart7" width="400" height="400"></canvas>
+
+    </div>
+
+</template>
+        
+        
+<style>
+
+</style>

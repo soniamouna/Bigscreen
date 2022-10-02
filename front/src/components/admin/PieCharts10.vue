@@ -7,26 +7,32 @@ export default {
         return {
             labels: [],
             chartDatas: [],
-            error:"",
-            apiURL:import.meta.env.VITE_BASE_API,
+            error: "",
+            apiURL: import.meta.env.VITE_BASE_API,
+            message: ""
+
 
         }
     },
     async mounted() {
         const token = localStorage.getItem("token")
 
-        await axios.get(this.apiURL+"infosVR/10", {
+        await axios.get(this.apiURL + "infosVR/10", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + token,
             },
         })
             .then((response) => {
-                this.labels = response.data.labels
-                this.chartDatas = response.data.chartDatas
+                if (response.status == 204) {
+                    this.message = "Aucun sondage enregistré"
+                } else {
+                    this.labels = response.data.labels;
+                    this.chartDatas = response.data.chartDatas;
+                }
 
             })
-            .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
+            .catch((err) => this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
         const ctx = document.getElementById('myChart10');
 
@@ -69,6 +75,7 @@ export default {
 
     <div>
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+        <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 
         <canvas v-else id="myChart10" width="400" height="400"></canvas>
 

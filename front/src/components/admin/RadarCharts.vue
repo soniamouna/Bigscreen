@@ -7,7 +7,8 @@ export default {
         return {
             averages:[],
             error:"",
-            apiURL:import.meta.env.VITE_BASE_API
+            apiURL:import.meta.env.VITE_BASE_API,
+            message:""
 
         }
     },
@@ -24,7 +25,12 @@ export default {
                 },
             })
         .then((response) => {
+            if (response.status == 204) {
+                    this.message = "Aucun sondage enregistré"
+                } else {
                     this.averages=response.data
+                }
+                    
                     
             })
             .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
@@ -83,6 +89,7 @@ export default {
 
     <div>
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+        <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 
         <canvas v-else id="myRadarChart" width="400" height="400"></canvas>
     </div>
