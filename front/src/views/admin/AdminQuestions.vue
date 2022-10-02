@@ -14,7 +14,6 @@ export default {
         axios
             .get("http://127.0.0.1:8000/api/questions")
             .then((response) => {
-                console.log(response);
                 this.questions = response.data;
             })
             .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");

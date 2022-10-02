@@ -46,11 +46,9 @@ export default {
 
       if (this.checkResponses() == true) {
         this.show = true
-        console.log(this.questions)
         await axios.post("http://127.0.0.1:8000/api/responses", { email: this.responses[1], responses: this.responses })
           .then(response => {
             this.show = true
-            console.log(response)
             this.link = response.data.link
           })
           .catch(error => {

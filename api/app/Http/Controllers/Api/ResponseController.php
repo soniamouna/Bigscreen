@@ -13,11 +13,11 @@ use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Cast\Object_;
 
 class ResponseController extends Controller
-{   
+{
 
     public function getQuality()
     {
-        $questionId = [11,12,13,14,15];
+        $questionId = [11, 12, 13, 14, 15];
         $answersAverage = [];
         foreach ($questionId as $id) {
             $averages = Response::where('questionId', $id)->get()->avg('value');
@@ -26,28 +26,28 @@ class ResponseController extends Controller
         return response()->json($answersAverage);
     }
 
-    public function getVrInfos($id){
+    public function getVrInfos($id)
+    {
         $answers = Response::where('questionId', $id)->get();
         $possible_answers = Question::where('id', $id)->get();
         $options = json_decode($possible_answers[0]->choices);
         $stats = [];
-       
+
         foreach ($options as $option) {
 
             $count = 0;
             foreach ($answers as $answer) {
                 if ($answer->value == $option) {
-                    
+
                     $count = $count += 1;
                 }
             }
             array_push($stats, $count);
-
         }
-        
+
         return response()->json([
-            "labels"=>$options,
-            "chartDatas"=>$stats
+            "labels" => $options,
+            "chartDatas" => $stats
         ]);
     }
     /**
@@ -56,10 +56,10 @@ class ResponseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-   
-        $responses=Response::getAll()->groupBy("respondentId");
-        return response()->json($responses); 
+    {
+
+        $responses = Response::getAll()->groupBy("respondentId");
+        return response()->json($responses);
     }
 
     /**
@@ -79,34 +79,31 @@ class ResponseController extends Controller
         if ($validate->fails()) {
             return response()->json(['message' => 'Validation failed', 'errors' => $validate->errors()], 422);
         }
-        $email=$request->email; //Get the email from the request 
-        $responses=$request->responses;//Get the responses from the request 
+        $email = $request->email; //Get the email from the request 
+        $responses = $request->responses; //Get the responses from the request 
 
         $questions = Question::getAll(); //Get all the questions
-        $repondentEmail=Respondent::getByEmail($email); // Get the respondent by the email
+        $repondentEmail = Respondent::getByEmail($email); // Get the respondent by the email
 
         //Create a new Respondent if the email doesn't appear in the database respondents
         if ($repondentEmail === null) {
             $newRespondent = Respondent::create([
-              'email' => $email,
-              'link' => Str::uuid(),
+                'email' => $email,
+                'link' => Str::uuid(),
             ]);
             $newRespondent->save();
             foreach ($questions as $key => $question) { // Create a new Response foreach question 
                 Response::create([
-                    'value' => $responses[$key+1],
+                    'value' => $responses[$key + 1],
                     'questionId' => $question->id,
                     'respondentId' => $newRespondent->id,
                 ]);
             }
             $link = $newRespondent->link;
-            return response()->json(['message' => 'New poll and respondent created','link'=>$link],200);
-        }else{
-            return response()->json(['message'=>"Cet email existe déjà. Veuillez saisir un autre email.",'errors' => 'Respondent already exists'],409);
+            return response()->json(['message' => 'New poll and respondent created', 'link' => $link], 200);
+        } else {
+            return response()->json(['message' => "Cet email existe déjà. Veuillez saisir un autre email.", 'errors' => 'Respondent already exists'], 409);
         }
-       
-       
-    
     }
 
     /**
@@ -117,8 +114,16 @@ class ResponseController extends Controller
      */
     public function show($id)
     {
-        $responses=Response::getByRespondentId($id);
-        return response()->json($responses);
+        $responses = Response::getByRespondentId($id);
+        if ($responses == null) {
+            return response()->json([
+                'error' => "Unauthorized. No respondent matches in database",
+            ], 401);
+        } else {
+            return response()->json([
+                'response' => $responses
+            ], 200);
+        }
     }
 
     /**

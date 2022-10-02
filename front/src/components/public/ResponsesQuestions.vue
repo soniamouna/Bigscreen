@@ -8,7 +8,7 @@ export default {
             default: () => []
         },
         responses: {
-            type: Array,
+            type: Object,
             default: () => []
         }
     },
