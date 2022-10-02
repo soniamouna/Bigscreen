@@ -10,6 +10,7 @@ export default {
       questions: [],
       createdAt: "",
       error: "",
+      apiURL:import.meta.env.VITE_BASE_API
     };
   },
 
@@ -29,7 +30,7 @@ export default {
     const link = route.params.link;
 
     axios
-      .get("http://127.0.0.1:8000/api/questions")
+      .get(this.apiURL+"questions")
       .then((response) => {
         this.questions = response.data;
       })
@@ -40,12 +41,12 @@ export default {
       );
 
     axios
-      .get("http://127.0.0.1:8000/api/respondents/" + link)
+      .get(this.apiURL+"respondents/" + link)
       .then((response) => {
         this.createdAt = this.getDateSurvey(response.data.respondent.created_at);
         const idRespondent = response.data.respondent.id;
         axios
-          .get("http://127.0.0.1:8000/api/responses/" + idRespondent)
+          .get(this.apiURL+"responses/" + idRespondent)
           .then((res) => {
             this.responses = res.data.responses;
           })

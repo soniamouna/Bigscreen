@@ -8,12 +8,14 @@ export default {
         return {
             questions: [],
             responses: [],
-            error:""
+            error:"",
+            apiURL:import.meta.env.VITE_BASE_API
+
         };
     },
     mounted() {
         const token = localStorage.getItem("token")
-        axios.get("http://127.0.0.1:8000/api/questions")
+        axios.get(this.apiURL+"questions")
         .then((response) => {
                 this.questions = response.data
 
@@ -21,7 +23,7 @@ export default {
             })
             .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
-        axios.get("http://127.0.0.1:8000/api/responses", {
+        axios.get(this.apiURL+"responses", {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + token,

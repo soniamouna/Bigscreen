@@ -7,13 +7,14 @@
             return {
                 labels: [],
                 chartDatas: [],
-                error:""
+                error:"",
+                apiURL:import.meta.env.VITE_BASE_API
             }
         },
         async mounted() {
             const token = localStorage.getItem("token")
     
-            await axios.get("http://127.0.0.1:8000/api/infosVR/7", {
+            await axios.get(this.apiURL+"infosVR/7", {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + token,

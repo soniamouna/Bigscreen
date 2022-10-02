@@ -18,7 +18,8 @@ export default {
       show: false,
       link: "",
       baseUrl: import.meta.env.VITE_BASE_URL,
-      error: ""
+      error: "",
+      apiURL:import.meta.env.VITE_BASE_API
     }
   },
   methods: {
@@ -46,7 +47,7 @@ export default {
 
       if (this.checkResponses() == true) {
         this.show = true
-        await axios.post("http://127.0.0.1:8000/api/responses", { email: this.responses[1], responses: this.responses })
+        await axios.post(this.apiURL+"responses", { email: this.responses[1], responses: this.responses })
           .then(response => {
             this.show = true
             this.link = response.data.link
@@ -92,7 +93,7 @@ export default {
               facile à utiliser, seul ou en famille.
               Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
               cette adresse:
-              <a :href="this.baseUrl+'reponses/' + this.link">{{this.baseUrl+'reponses/'+this.link}}</a>
+              <a class="linkRespondent" :href="this.baseUrl+'reponses/' + this.link">{{this.baseUrl+'reponses/'+this.link}}</a>
             </p>
             <p v-else>{{this.error}}</p>
           </div>
@@ -107,6 +108,16 @@ export default {
 </template>
     
 <style>
+  .linkRespondent{
+    text-decoration: none;
+    color: rgb(146, 38, 255);
+    
+  }
+  .linkRespondent:hover {
+    text-decoration: underline;
+    color: rgb(146, 38, 255);
+
+  }
 @media screen and (min-width: 800px) and (max-width: 4000px) {
 
   .sendButton,

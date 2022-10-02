@@ -13,7 +13,8 @@ export default {
       email: "",
       password: "",
       error: "",
-      statusCode:""
+      statusCode:"",
+      apiURL:import.meta.env.VITE_BASE_API
     };
   },
 
@@ -24,7 +25,7 @@ export default {
         event.preventDefault();
       } else {
         await axios
-          .post("http://127.0.0.1:8000/api/login", {
+          .post(this.apiURL+"login", {
             email: this.email,
             password: this.password,
           })

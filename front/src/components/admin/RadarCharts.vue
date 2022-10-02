@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             averages:[],
-            error:""
+            error:"",
+            apiURL:import.meta.env.VITE_BASE_API
 
         }
     },
@@ -16,7 +17,7 @@ export default {
     async mounted() {
         const token = localStorage.getItem("token")
 
-        await axios.get("http://127.0.0.1:8000/api/quality",{
+        await axios.get(this.apiURL+"quality",{
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + token,

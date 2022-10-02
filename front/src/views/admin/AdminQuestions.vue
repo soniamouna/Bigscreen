@@ -7,12 +7,13 @@ export default {
     data() {
         return {
             questions: [],
-            error:""
+            error:"",
+            apiURL:import.meta.env.VITE_BASE_API
         };
     },
     mounted() {
         axios
-            .get("http://127.0.0.1:8000/api/questions")
+            .get(this.apiURL+"questions")
             .then((response) => {
                 this.questions = response.data;
             })
