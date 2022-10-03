@@ -74,6 +74,7 @@ export default {
 <template>
 
     <div>
+        <p><span class="fw-bolder">Question 10 :</span> Utilisation principale de Bigscreen</p>
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 

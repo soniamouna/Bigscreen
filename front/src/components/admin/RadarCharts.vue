@@ -46,7 +46,7 @@ export default {
                 "Audio",
             ],
             datasets: [{
-                label: 'Moyenne sur la qualité de Bigscreen',
+                label: 'Moyenne de la qualité de Bigscreen',
                 data: this.averages ,
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -88,6 +88,7 @@ export default {
 <template>
 
     <div>
+        <p><span class="fw-bolder">Question 11 à 15 :</span> Moyenne de la qualité des services de Bigscreen</p>
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 

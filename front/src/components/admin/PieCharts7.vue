@@ -70,6 +70,7 @@ export default {
 <template>
 
     <div>
+        <p><span class="fw-bolder">Question 7 :</span> Achats des contenus VR en fonction des différents magasins d'application</p>
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 

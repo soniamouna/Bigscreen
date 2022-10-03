@@ -47,7 +47,7 @@ class QuestionSeeder extends Seeder
                 'created_at' => now()
             ],
             [
-                'title' => 'Quel marque de casque VR utilisez vous ?',
+                'title' => 'Quelle marque de casque VR utilisez vous ?',
                 'type' => 'A',
                 'choices' => json_encode(['Oculus Quest','Occulus Rift/s','HTC Vive','Windows Mixed Reality','PSVR']),
                 'created_at' => now()
