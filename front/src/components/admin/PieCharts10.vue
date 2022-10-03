@@ -78,7 +78,7 @@ export default {
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 
-        <canvas v-else id="myChart10" width="400" height="400"></canvas>
+        <canvas v-else id="myChart10" width="400" height="400" aria-label="Graph-utilisation-principale" role="graphique"></canvas>
 
     </div>
 

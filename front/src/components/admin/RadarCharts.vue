@@ -72,6 +72,7 @@ export default {
                         borderWidth: 3
                     }
                 }
+                
             },
         });
         
@@ -92,7 +93,7 @@ export default {
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
 
-        <canvas v-else id="myRadarChart" width="400" height="400"></canvas>
+        <canvas v-else id="myRadarChart" width="400" height="400" aria-label="Graph-moyenne-qualité" role="graphique"></canvas>
     </div>
 
 </template>
