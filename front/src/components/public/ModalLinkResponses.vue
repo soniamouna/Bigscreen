@@ -19,27 +19,37 @@ export default {
       link: "",
       baseUrl: import.meta.env.VITE_BASE_URL,
       error: "",
-      apiURL:import.meta.env.VITE_BASE_API
+      apiURL: import.meta.env.VITE_BASE_API
     }
   },
   methods: {
     reloadPage() {
-      window.location.reload();
+      if (!this.link == "") {
+        window.location.reload();
+      }
+
     },
     checkResponses() {
       this.error = "";
       for (const question of this.questions) {
         if (this.responses[question.id] == '') {
-          this.error="Veuillez remplir tous les champs du formulaire";
+          this.error = "Veuillez remplir tous les champs du formulaire";
           this.show = false
           return false
 
         } else {
-          var re = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
-          if (!re.test(this.responses[1])) {
-            this.error="Veuillez saisir un email valide !";
+          var reEmail = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
+          var reDigits = /^[0-9]*$/
+          if (!reEmail.test(this.responses[1])) {
+            this.error = "Veuillez saisir un email valide !";
             this.show = false
             return false
+          } else {
+            if (!reDigits.test(this.responses[2])) {
+              this.error = "Veuillez saisir un age valide !";
+              this.show = false
+              return false
+            }
           }
           return true
         }
@@ -49,14 +59,14 @@ export default {
 
       if (this.checkResponses() == true) {
         this.show = true
-        await axios.post(this.apiURL+"responses", { email: this.responses[1], responses: this.responses })
+        await axios.post(this.apiURL + "responses", { email: this.responses[1], responses: this.responses })
           .then(response => {
             this.show = true
             this.link = response.data.link
           })
           .catch(error => {
-            this.show=false 
-            this.error=error.response.data.message
+            this.show = false
+            this.error = error.response.data.message
           })
       }
     }
@@ -95,7 +105,8 @@ export default {
               facile à utiliser, seul ou en famille.
               Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
               cette adresse:
-              <a class="linkRespondent" :href="this.baseUrl+'reponses/' + this.link">{{this.baseUrl+'reponses/'+this.link}}</a>
+              <a class="linkRespondent"
+                :href="this.baseUrl+'reponses/' + this.link">{{this.baseUrl+'reponses/'+this.link}}</a>
             </p>
             <p v-else>{{this.error}}</p>
           </div>
@@ -110,16 +121,18 @@ export default {
 </template>
     
 <style>
-  .linkRespondent{
-    text-decoration: none;
-    color: rgb(146, 38, 255);
-    
-  }
-  .linkRespondent:hover {
-    text-decoration: underline;
-    color: rgb(146, 38, 255);
+.linkRespondent {
+  text-decoration: none;
+  color: rgb(146, 38, 255);
 
-  }
+}
+
+.linkRespondent:hover {
+  text-decoration: underline;
+  color: rgb(146, 38, 255);
+
+}
+
 @media screen and (min-width: 800px) and (max-width: 4000px) {
 
   .sendButton,

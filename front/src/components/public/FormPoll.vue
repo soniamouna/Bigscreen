@@ -82,6 +82,14 @@ export default {
                 maxlength="255"
                 v-model="responses[question.id]"
               />
+              <input
+                class="col-10 emailForm col-lg-8 pb-2 pb-2"
+                placeholder="ex : 12"
+                type="text"
+                v-else-if="question.id === 2"
+                maxlength="3"
+                v-model="responses[question.id]"
+              />
               <textarea
                 cl
                 class="area col-11 col-lg-11"
