@@ -88,16 +88,16 @@ export default {
     <div class="col-lg-12 text-center">
 
       <button @click="addResponses()" type="button" class=" sendButton" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
+        data-bs-target="#modalPoll">
         FINALISER
       </button>
     </div>
     <!-- Modal -->
-    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade " id="modalPoll" tabindex="-1" aria-labelledby="modal sondage" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button @click.prevent type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button @click.prevent type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
           </div>
           <div class="modal-body text-center">
             <p v-if="this.show">Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à

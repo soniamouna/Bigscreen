@@ -13,8 +13,8 @@ export default {
       email: "",
       password: "",
       error: "",
-      statusCode:"",
-      apiURL:import.meta.env.VITE_BASE_API
+      statusCode: "",
+      apiURL: import.meta.env.VITE_BASE_API
     };
   },
 
@@ -25,7 +25,7 @@ export default {
         event.preventDefault();
       } else {
         await axios
-          .post(this.apiURL+"login", {
+          .post(this.apiURL + "login", {
             email: this.email,
             password: this.password,
           })
@@ -40,14 +40,14 @@ export default {
             window.location.href = "/administration";
           })
           .catch((err) => {
-            if(err.response.status==500){
-                this.statusCode=err.response.status
-                this.error="Une erreur est survenue. Veuillez recharger la page ultérieurement."
-            }else{
-                this.error = err.response.data.data.error
+            if (err.response.status == 500) {
+              this.statusCode = err.response.status
+              this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement."
+            } else {
+              this.error = err.response.data.data.error
 
             }
-        });
+          });
       }
     },
   },
@@ -66,52 +66,36 @@ export default {
 </script>
 
 <template>
-    <div>
-        <p class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto" v-if="this.statusCode==500 && this.error!=''">{{this.error}}</p>
-        <form
-        @submit.prevent="login"
-        class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center"
-      >
-        <div class="mb-3">
-          <p class="text-danger fw-bolder" v-if="this.error != ''">{{ this.error }}</p>
-          <label for="inputEmail" class="form-label text-white font-monospace fs-5"
-            >Email</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="inputEmail"
-            placeholder="Ex : exemple@gmail.com"
-            v-model="this.email"
-          />
-          <div class="error" v-if="v$.email.$error">
-            {{ v$.email.$errors[0].$message }}
-          </div>
+  <div>
+    <p class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto"
+      v-if="this.statusCode==500 && this.error!=''">{{this.error}}</p>
+    <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center">
+      <div class="mb-3">
+        <p class="text-danger fw-bolder" v-if="this.error != ''">{{ this.error }}</p>
+        <label for="inputEmail" class="form-label text-white font-monospace fs-5">Email</label>
+        <input  id="inputEmail" type="email" class="form-control" name="email"
+        title="Entrer votre email" aria-label="champ email" required placeholder="Ex : exemple@gmail.com"
+          v-model="this.email" />
+        <div class="error" v-if="v$.email.$error">
+          {{ v$.email.$errors[0].$message }}
         </div>
-        <div class="mb-4">
-          <label for="inputPassword" class="form-label text-white font-monospace fs-5"
-            >Password</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="inputPassword"
-            placeholder="Entrez votre mot de passe"
-            v-model="this.password"
-          />
-          <div class="error" v-if="v$.password.$error">
-            {{ v$.password.$errors[0].$message }}
-          </div>
+      </div>
+      <div class="mb-4">
+        <label for="inputPassword" class="form-label text-white font-monospace fs-5">Password</label>
+        <input id="inputPassword" type="password" class="form-control" name="password"
+        title="Entrer votre mot de passe" aria-label="champ mot de passe" required placeholder="Entrez votre mot de passe"
+          v-model="this.password" />
+        <div class="error" v-if="v$.password.$error">
+          {{ v$.password.$errors[0].$message }}
         </div>
-        <button
-          type="submit"
-          class="btnLogin col-10 col-md-5 col-lg-8 col-xl-10 font-monospace col-xxl-8 p-2 m-auto fs-5 fw-bolder"
-        >
-          Se connecter
-        </button>
-      </form>
-    </div>
-  
+      </div>
+      <button type="submit"
+        class="btnLogin col-10 col-md-5 col-lg-8 col-xl-10 font-monospace col-xxl-8 p-2 m-auto fs-5 fw-bolder">
+        Se connecter
+      </button>
+    </form>
+  </div>
+
 </template>
 
 <style>

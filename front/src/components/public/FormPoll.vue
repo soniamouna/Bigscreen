@@ -9,13 +9,13 @@ export default {
       questions: [],
       responses: [],
       error: "",
-      apiURL:import.meta.env.VITE_BASE_API
+      apiURL: import.meta.env.VITE_BASE_API
     };
   },
 
   mounted() {
     axios
-      .get(this.apiURL+"questions")
+      .get(this.apiURL + "questions")
       .then((response) => {
         this.questions = response.data;
         this.questions.forEach((element) => {
@@ -35,10 +35,7 @@ export default {
 
 <template>
   <div id="form">
-    <p
-      v-if="this.error !== ''"
-      class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto"
-    >
+    <p v-if="this.error !== ''" class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto">
       {{ this.error }}
     </p>
 
@@ -52,21 +49,15 @@ export default {
           <!--Choices -->
           <div class="dotBorder pb-4 pt-4 col-12 col-lg-12 m-auto">
             <!-- Type A -->
-            <div v-if="question.type === 'A'">
-              <div class="" v-for="(choice, index) in question.choices" :key="index">
+            <div   v-if="question.type === 'A'">
+              <div  v-for="(choice, index) in question.choices" :key="index">
                 <div class="col-12 col-md-4 col-lg-6 row m-auto">
                   <div class="col-2 col-md-2 col-lg-2">
-                    <input
-                      class="m-auto"
-                      type="radio"
-                      :value="choice"
-                      :name="question.id"
-                      v-model="responses[question.id]"
-                      required
-                    />
+                    <input :id="'radio'+index"  class="m-auto" type="radio" :value="choice" :name="question.id"
+                      v-model="responses[question.id]"  />
                   </div>
                   <div class="col-10 col-md-10 col-lg-10">
-                    <label class="text-white font-monospace"> {{ choice }} </label>
+                    <label :for="'radio'+index"  class="text-white font-monospace"> {{ choice }} </label>
                   </div>
                 </div>
               </div>
@@ -74,48 +65,30 @@ export default {
             <!-- Type B -->
 
             <div class="text-center" v-else-if="question.type === 'B'">
-              <input
-                class="col-10 emailForm col-lg-8 pb-2 pb-2"
-                placeholder="exemple@gmail.com"
-                type="email"
-                v-if="question.id === 1"
-                maxlength="255"
-                v-model="responses[question.id]"
-              />
-              <input
-                class="col-10 emailForm col-lg-8 pb-2 pb-2"
-                placeholder="ex : 12"
-                type="text"
-                v-else-if="question.id === 2"
-                maxlength="3"
-                v-model="responses[question.id]"
-              />
-              <textarea
-                cl
-                class="area col-11 col-lg-11"
-                cols="30"
-                rows="10"
-                maxlength="255"
-                v-else
-                v-model="responses[question.id]"
-                required
-              ></textarea>
+              <div v-if="question.id === 1">
+                <label for="email" class="text-white">Saisissez votre email ci-dessous :</label>
+                <input id="email" class="col-10 inputForm col-lg-8 pb-2 pb-2" type="email" :name="question.id"
+                  title="Entrer votre email" aria-label="champ email" placeholder="exemple@gmail.com" required
+                  maxlength="255" v-model="responses[question.id]" />
+              </div>
+
+              <div v-else-if="question.id === 2">
+                <label for="age" class="text-white">Saisissez votre age ci-dessous :</label>
+                <input id="age" class="col-10 inputForm col-lg-8 pb-2 pb-2"  type="text" :name="question.id"
+                title="Entrer votre âge" aria-label="champ âge" placeholder="ex : 12" maxlength="3" v-model="responses[question.id]" />
+              </div>
+
+              <textarea class="area col-11 col-lg-11" :name="question.id"
+              title="Entrer votre réponse" :aria-label="'champ réponse question'+question.id" cols="30" rows="10" maxlength="255" v-else
+                v-model="responses[question.id]" required></textarea>
             </div>
             <!-- Type C -->
-            <div
-              class="col-12 col-md-12 col-lg-12 m-auto row"
-              v-else-if="question.type === 'C'"
-            >
+            <div class="col-12 col-md-12 col-lg-12 m-auto row" v-else-if="question.type === 'C'">
               <div class="col-2 col-md-2 col-lg-2 m-auto" v-for="index in 5" :key="index">
-                <input
-                  class="col-3 col-md-4 col-lg-3 mx-2"
-                  type="radio"
-                  :value="index"
-                  :name="question.id"
-                  v-model="responses[question.id]"
-                  required
-                />
-                <label class="col-2 col-md-6 col-lg-3 text-white"> {{ index }} </label>
+                <input :id="'quality'+index" class="col-3 col-md-4 col-lg-3 mx-2" type="radio" :name="question.id"
+                title="Notez la qualité" :aria-label="'champ note qualité question'+question.id" :value="index"
+                  v-model="responses[question.id]" required />
+                <label :for="'quality'+index" class="col-2 col-md-6 col-lg-3 text-white"> {{ index }} </label>
               </div>
             </div>
           </div>
@@ -133,8 +106,9 @@ export default {
 .errorMsg {
   border-radius: 10px;
 }
+
 @media screen and (min-width: 800px) and (max-width: 4000px) {
-  .emailForm {
+  .inputForm {
     border-radius: 10px;
   }
 
@@ -153,13 +127,13 @@ export default {
     border-radius: 20px;
   }
 
-  div > .statement {
+  div>.statement {
     font-size: 20px;
   }
 }
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
-  .emailForm {
+  .inputForm {
     border-radius: 10px;
   }
 
