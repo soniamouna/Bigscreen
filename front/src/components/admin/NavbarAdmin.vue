@@ -46,7 +46,7 @@ export default {
             <div class="col-12 container-fluid ">
                 <div class="row m-auto col-12">
                     <div class="p-2 col-9 col-lg-12">
-                        <a class="col-12 col-lg-12 m-auto text-white text-center font-monospace navTitle navbar-brand ">BIGSCREEN</a>
+                        <a class="col-12 col-lg-12 m-auto text-white text-center font-monospace navTitle navbar-brand " href="/administration">BIGSCREEN</a>
                     </div>
                     <div class="text-center toogleContainer col-3 col-lg-6">
                         <button class="border-light border-2 navbar-toggler" type="button" data-bs-toggle="collapse"
