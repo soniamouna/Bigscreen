@@ -53,11 +53,11 @@ export default {
               <div  v-for="(choice, index) in question.choices" :key="index">
                 <div class="col-12 col-md-4 col-lg-6 row m-auto">
                   <div class="col-2 col-md-2 col-lg-2">
-                    <input :id="'radio'+index"  class="m-auto" type="radio" :value="choice" :name="question.id"
+                    <input :id="'radio'+index+'-'+question.id"  class="m-auto" type="radio" :value="choice" :name="question.id"
                       v-model="responses[question.id]"  />
                   </div>
                   <div class="col-10 col-md-10 col-lg-10">
-                    <label :for="'radio'+index"  class="text-white font-monospace"> {{ choice }} </label>
+                    <label :for="'radio'+index+'-'+question.id"  class="text-white font-monospace"> {{ choice }} </label>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default {
             <!-- Type C -->
             <div class="col-12 col-md-12 col-lg-12 m-auto row" v-else-if="question.type === 'C'">
               <div class="col-2 col-md-2 col-lg-2 m-auto" v-for="index in 5" :key="index">
-                <input :id="'quality'+index" class="col-3 col-md-4 col-lg-3 mx-2" type="radio" :name="question.id"
+                <input :id="'quality'+index+'-'+question.id" class="col-3 col-md-4 col-lg-3 mx-2" type="radio" :name="question.id"
                 title="Notez la qualité" :aria-label="'champ note qualité question'+question.id" :value="index"
                   v-model="responses[question.id]" required />
                 <label :for="'quality'+index" class="col-2 col-md-6 col-lg-3 text-white"> {{ index }} </label>
