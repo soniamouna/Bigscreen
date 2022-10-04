@@ -19,6 +19,7 @@ export default {
       link: "",
       baseUrl: import.meta.env.VITE_BASE_URL,
       error: "",
+      check: false,
       apiURL: import.meta.env.VITE_BASE_API
     }
   },
@@ -32,32 +33,39 @@ export default {
     checkResponses() {
       this.error = "";
       for (const question of this.questions) {
-        if (this.responses[question.id] == '') {
+        if (this.responses[question.id] == '' || this.responses[question.id] == ' ') {
           this.error = "Veuillez remplir tous les champs du formulaire";
           this.show = false
-          return false
+          this.check = false
+          break
+        }
 
-        } else {
+        else {
           var reEmail = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
           var reDigits = /^[0-9]*$/
           if (!reEmail.test(this.responses[1])) {
             this.error = "Veuillez saisir un email valide !";
             this.show = false
-            return false
+            this.check = false
+            break
           } else {
             if (!reDigits.test(this.responses[2])) {
               this.error = "Veuillez saisir un age valide !";
               this.show = false
-              return false
+              this.check = false
+              break
+            } else {
+              this.check = true
             }
+
           }
-          return true
+
         }
       }
     },
     async addResponses() {
-
-      if (this.checkResponses() == true) {
+      console.log(this.checkResponses())
+      if (this.check == true) {
         this.show = true
         await axios.post(this.apiURL + "responses", { email: this.responses[1], responses: this.responses })
           .then(response => {
@@ -66,7 +74,14 @@ export default {
           })
           .catch(error => {
             this.show = false
-            this.error = error.response.data.message
+            if (error.response.status == 500) {
+              this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.";
+
+            } else {
+              this.error = error.response.data.message
+            }
+
+
           })
       }
     }
