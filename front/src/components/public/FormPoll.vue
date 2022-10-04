@@ -57,7 +57,7 @@ export default {
                       v-model="responses[question.id]"  />
                   </div>
                   <div class="col-10 col-md-10 col-lg-10">
-                    <label :for="'radio'+index+'-'+question.id"  class="text-white font-monospace"> {{ choice }} </label>
+                    <label :for="'radio'+index+'-'+question.id"  class="text-white "> {{ choice }} </label>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default {
                 <input :id="'quality'+index+'-'+question.id" class="col-3 col-md-4 col-lg-3 mx-2" type="radio" :name="question.id"
                 title="Notez la qualité" :aria-label="'champ note qualité question'+question.id" :value="index"
                   v-model="responses[question.id]" required />
-                <label :for="'quality'+index" class="col-2 col-md-6 col-lg-3 text-white"> {{ index }} </label>
+                <label :for="'quality'+index+'-'+question.id" class="col-2 col-md-6 col-lg-3 text-white"> {{ index }} </label>
               </div>
             </div>
           </div>

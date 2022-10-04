@@ -72,7 +72,7 @@ export default {
     <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center">
       <div class="mb-3">
         <p class="text-danger fw-bolder" v-if="this.error != ''">{{ this.error }}</p>
-        <label for="inputEmail" class="form-label text-white font-monospace fs-5">Email</label>
+        <label for="inputEmail" class="form-label text-white  fs-5">Email</label>
         <input  id="inputEmail" type="email" class="form-control" name="email"
         title="Entrer votre email" aria-label="champ email" required placeholder="Ex : exemple@gmail.com"
           v-model="this.email" />
@@ -81,7 +81,7 @@ export default {
         </div>
       </div>
       <div class="mb-4">
-        <label for="inputPassword" class="form-label text-white font-monospace fs-5">Password</label>
+        <label for="inputPassword" class="form-label text-white  fs-5">Password</label>
         <input id="inputPassword" type="password" class="form-control" name="password"
         title="Entrer votre mot de passe" aria-label="champ mot de passe" required placeholder="Entrez votre mot de passe"
           v-model="this.password" />
@@ -90,7 +90,7 @@ export default {
         </div>
       </div>
       <button type="submit"
-        class="btnLogin col-10 col-md-5 col-lg-8 col-xl-10 font-monospace col-xxl-8 p-2 m-auto fs-5 fw-bolder">
+        class="btnLogin col-10 col-md-5 col-lg-8 col-xl-10  col-xxl-8 p-2 m-auto fs-5 fw-bolder">
         Se connecter
       </button>
     </form>

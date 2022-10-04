@@ -24,7 +24,7 @@ export default {
                 <FormQuestionInfos :id="question.id" :length="this.questions.length" :title="question.title" />
                 <div class=" dotBorder pb-4 pt-4 col-12 col-lg-12 m-auto">
                     <div v-for="response in this.responses" :key="response.id">
-                        <p class="statement m-auto text-center text-white font-monospace"
+                        <p class="statement m-auto text-center text-white "
                             v-if="response.questionId==question.id">{{response.value}}</p>
                     </div>
                 </div>

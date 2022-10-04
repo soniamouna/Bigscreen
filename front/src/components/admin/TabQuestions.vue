@@ -48,7 +48,6 @@
 td,
 th {
     border: 1px solid grey;
-    font-family: monospace;
     
 }
 

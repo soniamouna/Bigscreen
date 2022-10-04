@@ -69,11 +69,11 @@ export default {
     <div class="mt-lg-5 mb-lg-5 pb-4 pt-lg-4 col-lg-11 m-auto pollContainer">
       <div class="col-lg-11 headerBackground pt-4 pb-4 m-auto mt-lg-2">
         <h1
-          class="col-10 col-lg-10 col-xl-9 pb-3 m-auto bigscreenTitle text-white font-monospace"
+          class="col-10 col-lg-10 col-xl-9 pb-3 m-auto bigscreenTitle text-white "
         >
           BIGSCREEN
         </h1>
-        <p class="m-auto text-center col-9 col-lg-9 titlePoll text-white font-monospace">
+        <p class="m-auto text-center col-9 col-lg-9 titlePoll text-white ">
           Vous trouverez ci-dessous les réponses que vous avez apportées à notre sondage
           le {{ this.createdAt }}
         </p>
