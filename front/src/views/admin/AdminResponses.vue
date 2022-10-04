@@ -52,6 +52,7 @@ export default {
     <div class="row m-auto col-lg-12 col-md-12 col-12">
         <NavbarAdmin page="responses" />
         <div class="scrollPage col-lg-9 p-4 m-auto">
+            <h1>Liste des différentes réponses du sondage</h1>
             <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.message!=''">{{this.message}}</p>
             <TabResponses v-else :questions="this.questions" :responses="this.responses" :error="this.error" />
         </div>

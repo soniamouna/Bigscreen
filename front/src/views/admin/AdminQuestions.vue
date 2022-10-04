@@ -26,6 +26,7 @@ export default {
     <div class="row m-auto col-12 col-md-12 col-lg-12">
         <NavbarAdmin page="questions"/>
         <div class="scrollPage col-lg-9 p-4 m-auto">
+            <h1>Liste des questions du sondage</h1>
             <TabQuestions :questions="this.questions" :error="this.error"/>
         </div>
     </div>
