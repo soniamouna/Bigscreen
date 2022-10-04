@@ -22,7 +22,6 @@ export default {
                 },
             })
             .then((response) => {
-                console.log(response)
                 if (response.status == 204) {
                     this.message = "Aucun sondage enregistré"
                 } else {

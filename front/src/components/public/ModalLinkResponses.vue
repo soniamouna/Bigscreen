@@ -64,7 +64,6 @@ export default {
       }
     },
     async addResponses() {
-      console.log(this.checkResponses())
       if (this.check == true) {
         this.show = true
         await axios.post(this.apiURL + "responses", { email: this.responses[1], responses: this.responses })
