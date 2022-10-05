@@ -16,42 +16,46 @@ export default {
   data() {
     return {
       show: false,
-      link: "",
-      baseUrl: import.meta.env.VITE_BASE_URL,
+      link: "", 
       error: "",
       check: false,
+      baseUrl: import.meta.env.VITE_BASE_URL,
       apiURL: import.meta.env.VITE_BASE_API
     }
   },
   methods: {
-    reloadPage() {
+    reloadPage() { //reload page if the user has the link to see his/her responses
       if (!this.link == "") {
         window.location.reload();
       }
 
     },
     checkResponses() {
-      this.error = "";
+      this.error = ""; // reset the error's message to an empty string
       for (const question of this.questions) {
+        //for each question check if the response was complete or not
         if (this.responses[question.id] == '' || this.responses[question.id] == ' ') {
-          this.error = "Veuillez remplir tous les champs du formulaire";
-          this.show = false
+          //if the user hasn't filled in all the inputs 
+          this.error = "Veuillez remplir tous les champs du formulaire"; // set the error's message
           this.check = false
           break
         }
 
         else {
+          //Reget email
           var reEmail = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
+          //Regex age
           var reDigits = /^[0-9]*$/
+          //Check if the email is valid
           if (!reEmail.test(this.responses[1])) {
             this.error = "Veuillez saisir un email valide !";
-            this.show = false
             this.check = false
             break
           } else {
+            //Check if the age is valid
+
             if (!reDigits.test(this.responses[2])) {
-              this.error = "Veuillez saisir un age valide !";
-              this.show = false
+              this.error = "Veuillez saisir un âge valide !";
               this.check = false
               break
             } else {
@@ -64,20 +68,22 @@ export default {
       }
     },
     async addResponses() {
-      console.log("h",this.checkResponses())
+      this.checkResponses() // check the responses
       if (this.check == true) {
-        this.show = true
+        // if the responses are validated, send them to database
         await axios.post(this.apiURL + "responses", { email: this.responses[1], responses: this.responses })
-          .then(response => {
-            this.show = true
-            this.link = response.data.link
+          .then(response => { 
+            this.link = response.data.link // get the link for the new user 
+            this.show = true // set show to true -> open modal
+           
           })
           .catch(error => {
             this.show = false
+            // if the server has a problem return an error message for the error500
             if (error.response.status == 500) {
               this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.";
+            } else { // if it's a problem about the responses return an error message related to the validations
 
-            } else {
               this.error = error.response.data.message
             }
 
@@ -101,7 +107,7 @@ export default {
   <div class="pb-5">
     <!-- Button trigger modal -->
     <div class="col-lg-12 text-center">
-
+      <!-- The button will display a modal and call the function addResponses() -->
       <button @click="addResponses()" type="button" class=" sendButton" data-bs-toggle="modal"
         data-bs-target="#modalPoll">
         FINALISER
@@ -112,10 +118,12 @@ export default {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button @click.prevent type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            <!-- Button to close the modal (X) -->
+            <button @click.prevent="reloadPage"  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button> 
           </div>
           <div class="modal-body text-center">
-            <p v-if="this.show">Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
+            <!-- if check=true display the modal with the message for the user and the user's link -->
+            <p v-if="this.check">Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
               votre investissement, nous vous préparons une application toujours plus
               facile à utiliser, seul ou en famille.
               Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
@@ -126,7 +134,8 @@ export default {
             <p v-else>{{this.error}}</p>
           </div>
           <div class="modal-footer">
-            <button @click="reloadPage" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <!-- Button to close the modal -->
+            <button @click.prevent="reloadPage" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>

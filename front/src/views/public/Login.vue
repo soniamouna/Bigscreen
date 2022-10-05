@@ -10,13 +10,15 @@ export default {
 <template>
   <div class="bgLogin  "> 
     <div class="col-lg-12 ">
+      <!-- Logo -->
       <h1 class=" text-center col-lg-2 p-4"><a href="/" class="buttonBigscreenLogin ">BIGSCREEN</a></h1>
     </div>
     <div class="loginFormContainer container">
       <h1 class="m-auto fw-bolder text-center text-white mb-4 col-lg-9 ">Connectez-vous !</h1>
 
       <div class="">
-        <FormLogin />
+        <!-- Component form to login -->
+        <FormLogin /> 
       </div>
     </div>
 

@@ -13,9 +13,9 @@ export default {
         }
     },
     methods: {
-    
+        // methods to loggout from the admin
         async logout() {
-            const token = localStorage.getItem('token')
+            const token = localStorage.getItem('token') //get the token in the localStorage
 
             await axios.post(this.apiURL+"logout", null, {
                 headers: {
@@ -24,17 +24,25 @@ export default {
                 },
             })
                 .then((response) => {
-                    localStorage.removeItem('token')
-                    window.location.href = "/login"
+                    localStorage.removeItem('token') //remove the token into the localStorage
+                    window.location.href = "/login" // redirect to Login page
                 })
-                .catch(err =>  alert("Une erreur est survenue. Veuillez recharger la page ultérieurement."));
+                .catch(err =>  {
+                    console.log(err)
+                    if(err.response.status==401){ 
+                        alert("Vous êtes déjà déconnecté(e)")
+                        window.location.href = "/login"
+                    }
+                    alert("Une erreur est survenue. Veuillez recharger la page ultérieurement.")
+                });
         }
     },
 
     mounted() {
+        // chek if token exist or not 
         if (!localStorage.getItem("token")) {
             alert("Veuillez vous reconnecter");
-            window.location.href = "/login";
+            window.location.href = "/login"; 
         }
     },
 }
@@ -46,9 +54,11 @@ export default {
             <div class="col-12 container-fluid ">
                 <div class="row m-auto col-12">
                     <div class="p-2 col-9 col-lg-12">
+                        <!-- Logo -->
                         <a class="col-12 col-lg-12 m-auto text-white text-center  navTitle navbar-brand " href="/administration">BIGSCREEN</a>
                     </div>
                     <div class="text-center toogleContainer col-3 col-lg-6">
+                        <!-- Toggle button displaying navbar in small screen -->
                         <button class="border-light border-2 navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">

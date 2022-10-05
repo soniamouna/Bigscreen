@@ -16,9 +16,9 @@ export default {
         
     },
     async mounted() {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("token") //get the token into the localStorage
 
-        await axios.get(this.apiURL+"quality",{
+        await axios.get(this.apiURL+"quality",{ // get the averages of the different users choices for the question 11 to 15
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + token,
@@ -28,14 +28,15 @@ export default {
             if (response.status == 204) {
                     this.message = "Aucun sondage enregistré"
                 } else {
-                    this.averages=response.data
+                    this.averages=response.data // get the different averages
                 }
                     
                     
             })
             .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
-       
+                   // Define the different graph's params
+
         const ctx = document.getElementById('myRadarChart');
         const data = {
             labels: [

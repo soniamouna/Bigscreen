@@ -4,6 +4,7 @@ export default {
 }
 </script>
 <template>
+    <!-- Display this page when wrong url -->
     <div class="bg-404Page m-auto text-center pt-5">
         <div class="text-white mt-5 pt-5">
             <h1>ERREUR 404</h1>

@@ -11,23 +11,31 @@ export default {
 
 <template>
     <div class=" m-auto row col-lg-12 col-md-12 col-12">
+        <!-- Component navbar admin -->
         <NavbarAdmin page="home" />
         <div class="scrollPage col-lg-9 col-xl-9 p-4 m-auto ">
             <div class="col-lg-12 col-xl-12">
                 <div class="col-lg-12 col-xl-12 m-auto">
                     <div class="m-auto pb-4 col-lg-12 col-xl-12 row">
+                        <!-- Display the differents Charts -->
+                        <!-- Piecharts Question 6 -->
                         <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                             <PieCharts6 />
                         </div>
+                        <!-- Piecharts Question 7 -->
+
                         <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                             <PieCharts7 />
                         </div>
 
                     </div>
                     <div class="m-auto col-lg-12 col-xl-12 row">
+                        <!-- Piecharts Question 10 -->
+
                         <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                             <PieCharts10 />
                         </div>
+                        <!-- RadarCharts -->
                         <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
                             <RadarCharts />
                         </div>

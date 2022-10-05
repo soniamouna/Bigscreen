@@ -9,9 +9,9 @@ export default {
             type: Object,
             default: () => []
         },
-        error:{
-                type:String,
-            }
+        error: {
+            type: String,
+        }
 
     },
 
@@ -21,25 +21,30 @@ export default {
 </script>
     
 <template>
-<div class="responsesBackground ">
-    <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
 
-    <table v-else class="tabResponsesAppearance container mb-4 col-lg-12 m-auto mt-4 " v-for="response in responses" :key="response.id">
-        <tr class="text-white text-center">
-            <th>N°</th>
-            <th>Questions</th>
-            <th>Réponses</th>
-        </tr>
+    <div class="responsesBackground ">
+        <!-- If there is an error display an error's message -->
 
-        <tr v-for="question,i in questions" :key="question.id" class="col-lg-12">
-            <td class="break text-center col-lg-2">{{question.id}}</td>
-            <td class="break col-lg-6">{{question.title}}</td>
-            <td class="break text-center col-lg-3">{{response[i].value}}</td>
-        </tr>
+        <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+        <!-- For each respondent create a table of responses -->
+
+        <table v-else class="tabResponsesAppearance container mb-4 col-lg-12 m-auto mt-4 " v-for="response in responses"
+            :key="response.id">
+            <tr class="text-white text-center">
+                <th>N°</th>
+                <th>Questions</th>
+                <th>Réponses</th>
+            </tr>
+            <!-- For each question create a line into the table -->
+            <tr v-for="question,i in questions" :key="question.id" class="col-lg-12">
+                <td class="break text-center col-lg-2">{{question.id}}</td>
+                <td class="break col-lg-6">{{question.title}}</td>
+                <td class="break text-center col-lg-3">{{response[i].value}}</td>
+            </tr>
 
 
-    </table>
-</div>
+        </table>
+    </div>
 </template>
     
     
@@ -49,27 +54,26 @@ tr,
 td,
 th {
     border: 1px solid grey;
-    
-    
+
+
 }
 
-tr>th{
+tr>th {
     background-color: rgb(117, 129, 244);
 }
 
-.tabResponsesAppearance{
+.tabResponsesAppearance {
     background-color: rgba(255, 255, 255, 0.694);
     backdrop-filter: blur(22px);
 }
 
 
-.responsesTitlePage{
+.responsesTitlePage {
     border-bottom: 1px solid white;
     font-weight: bolder;
 }
 
-.break{
+.break {
     word-break: break-all;
 }
-
 </style>

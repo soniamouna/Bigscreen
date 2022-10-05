@@ -23,6 +23,7 @@ export default {
                 <!-- Informations about the question -->
                 <FormQuestionInfos :id="question.id" :length="this.questions.length" :title="question.title" />
                 <div class=" dotBorder pb-4 pt-4 col-12 col-lg-12 m-auto">
+                    <!-- for each question display the value of the question in function of the question -->
                     <div v-for="response in this.responses" :key="response.id">
                         <p class="statement m-auto text-center text-white "
                             v-if="response.questionId==question.id">{{response.value}}</p>
