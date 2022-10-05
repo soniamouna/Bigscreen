@@ -32,9 +32,10 @@ export default {
     },
     checkResponses() {
       this.error = ""; // reset the error's message to an empty string
+      const reNotEmpty= /^(?!\s*$).+/
       for (const question of this.questions) {
         //for each question check if the response was complete or not
-        if (this.responses[question.id] == '' || this.responses[question.id] == ' ') {
+        if (!reNotEmpty.test(this.responses[question.id])) {
           //if the user hasn't filled in all the inputs 
           this.error = "Veuillez remplir tous les champs du formulaire"; // set the error's message
           this.check = false
@@ -43,9 +44,9 @@ export default {
 
         else {
           //Reget email
-          var reEmail = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
+          const reEmail = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
           //Regex age
-          var reDigits = /^[0-9]*$/
+          const reDigits = /^[0-9]*$/
           //Check if the email is valid
           if (!reEmail.test(this.responses[1])) {
             this.error = "Veuillez saisir un email valide !";
