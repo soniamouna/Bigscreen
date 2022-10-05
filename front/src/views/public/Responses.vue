@@ -23,7 +23,7 @@ export default {
       const year = dateToString.getFullYear();
       const hours = dateToString.getHours();
       const minutes = dateToString.getMinutes();
-      return (day<10?"0":"")+day + "/" + (month<10?"0":"")+month + "/" + year + " à " + hours + "h" + minutes;
+      return (day<10?"0":"")+day + "/" + (month<10?"0":"")+month + "/" + year + " à " + hours + "h" + (minutes<10?"0":"")+minutes;
     },
   },
   mounted() {
