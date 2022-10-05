@@ -74,8 +74,8 @@ export default {
         <!-- Logo -->
         <h1
           class="col-10 col-lg-10 col-xl-9 pb-3 m-auto bigscreenTitle text-white "
-        >
-          BIGSCREEN
+        ><a class="logo text-white text-decoration-none" href="/"> BIGSCREEN</a>
+         
         </h1>
         <!-- Display the created_at -->
         <p v-if="this.error == ''" class="m-auto text-center col-9 col-lg-9 titlePoll text-white ">
