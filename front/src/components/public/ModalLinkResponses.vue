@@ -32,7 +32,7 @@ export default {
     },
     checkResponses() {
       this.error = ""; // reset the error's message to an empty string
-      const reNotEmpty= /^(?!\s*$).+/
+      const reNotEmpty= /^(?!\s*$).+/ // regex not empty
       for (const question of this.questions) {
         //for each question check if the response was complete or not
         if (!reNotEmpty.test(this.responses[question.id])) {
@@ -43,7 +43,7 @@ export default {
         }
 
         else {
-          //Reget email
+          //Regex email
           const reEmail = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
           //Regex age
           const reDigits = /^[0-9]*$/
