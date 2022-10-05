@@ -1,0 +1,55 @@
+@import "../base.css";
+
+.poll-container {
+  background-image: url(../../../img/lavaBackground2.jpg);
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.form-container {
+  border-radius: 20px;
+  background-color: rgba(115, 115, 115, 0.498);
+  backdrop-filter: blur(10px);
+}
+
+.dot-border {
+  border: 2px dotted white;
+  border-radius: 10px;
+}
+
+div > .statement {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .titleQuestion {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1900px) and (max-width: 4000px) {
+  .titlePoll {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1890px) {
+  .titlePoll {
+    font-size: 21px;
+  }
+}
+
+@media screen and (min-width: 200px) and (max-width: 990px) {
+  .poll-container {
+    border-radius: 0px;
+  }
+
+  .headerBackground {
+    background-color: rgba(83, 23, 138, 0.632);
+    backdrop-filter: blur(20px);
+  }
+
+  .logo {
+    text-align: center;
+  }
+}

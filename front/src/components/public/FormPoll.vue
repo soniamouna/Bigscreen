@@ -15,8 +15,7 @@ export default {
 
   mounted() {
     
-    axios
-      .get(this.apiURL + "questions") 
+    axios.get(this.apiURL + "questions") 
       .then((response) => {
         this.questions = response.data; // Get the whole questions
         this.questions.forEach((element) => { // For each question create an empty element into the response's table with id's question
@@ -37,17 +36,17 @@ export default {
   <!-- Form Poll Component -->
   <div id="form">
     <!-- If server send an error the paragraph will display -->
-    <p v-if="this.error !== ''" class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto">
+    <p v-if="this.error !== ''" class="rounded-2 fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto">
       {{ this.error }}
     </p>
     <form>
       <div class="col-12 col-lg-12" v-for="question in this.questions" :key="question.id">
-        <div class="formContainer mt-4 mb-4 col-lg-6 m-auto p-lg-4 pt-4 pb-4">
+        <div class="form-container mt-4 mb-4 col-lg-6 m-auto p-lg-4 pt-4 pb-4">
           <!-- Informations about the question -->
           <FormQuestionInfos :id="question.id" :length="this.questions.length" :title="question.title" />
 
           <!--Choices -->
-          <div class="dotBorder pb-4 pt-4 col-12 col-lg-12 m-auto">
+          <div class="dot-border pb-4 pt-4 col-12 col-lg-12 m-auto">
             <!-- Type A -->
             <div   v-if="question.type === 'A'">
               <div  v-for="(choice, index) in question.choices" :key="index">
@@ -69,18 +68,18 @@ export default {
               <!-- If question 1 => input email -->
               <div v-if="question.id === 1">
                 <label for="email" class="text-white">Saisissez votre email ci-dessous :</label>
-                <input id="email" class="col-10 inputForm col-lg-8 pb-2 pb-2" type="email" :name="question.id"
+                <input id="email" class="col-10 rounded-3 col-lg-8 pb-2 pb-2" type="email" :name="question.id"
                   title="Entrer votre email" aria-label="champ email" placeholder="exemple@gmail.com" required
                   maxlength="255" v-model="responses[question.id]" />
               </div>
               <!-- If question 2 => input age -->
               <div v-else-if="question.id === 2">
                 <label for="age" class="text-white">Saisissez votre âge ci-dessous :</label>
-                <input id="age" class="col-10 inputForm col-lg-8 pb-2 pb-2"  type="text" :name="question.id"
+                <input id="age" class="col-10 rounded-3 col-lg-8 pb-2 pb-2"  type="text" :name="question.id"
                 title="Entrer votre âge" aria-label="champ âge" placeholder="ex : 12" maxlength="3" v-model="responses[question.id]" />
               </div>
 
-              <textarea class="area col-11 col-lg-11" :name="question.id"
+              <textarea class="rounded-3 col-11 col-lg-11" :name="question.id"
               title="Entrer votre réponse" :aria-label="'champ réponse question'+question.id" cols="30" rows="10" maxlength="255" v-else
                 v-model="responses[question.id]" required></textarea>
             </div>
@@ -105,58 +104,6 @@ export default {
   </div>
 </template>
 
-<style>
-.errorMsg {
-  border-radius: 10px;
-}
-
-@media screen and (min-width: 800px) and (max-width: 4000px) {
-  .inputForm {
-    border-radius: 10px;
-  }
-
-  .formContainer {
-    border-radius: 20px;
-    background-color: rgba(115, 115, 115, 0.498);
-    backdrop-filter: blur(10px);
-  }
-
-  .dotBorder {
-    border: 2px dotted white;
-    border-radius: 10px;
-  }
-
-  .area {
-    border-radius: 20px;
-  }
-
-  div>.statement {
-    font-size: 20px;
-  }
-}
-
-@media screen and (min-width: 300px) and (max-width: 768px) {
-  .inputForm {
-    border-radius: 10px;
-  }
-
-  .titleQuestion {
-    text-align: center;
-  }
-
-  .formContainer {
-    border-radius: 20px;
-    background-color: rgba(115, 115, 115, 0.498);
-    backdrop-filter: blur(10px);
-  }
-
-  .dotBorder {
-    border: 2px dotted white;
-    border-radius: 10px;
-  }
-
-  .area {
-    border-radius: 20px;
-  }
-}
-</style>
+<style scoped>
+  @import "../../assets/pollCss/poll.css";
+  </style>
