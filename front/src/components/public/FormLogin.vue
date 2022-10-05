@@ -44,6 +44,8 @@ export default {
               this.statusCode = err.response.status
               this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement."
             } else {
+              this.email=""
+              this.password=""
               this.error = err.response.data.data.error
 
             }
@@ -71,7 +73,7 @@ export default {
       v-if="this.statusCode==500 && this.error!=''">{{this.error}}</p>
     <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center">
       <div class="mb-3">
-        <p class="text-danger fw-bolder" v-if="this.error != ''">{{ this.error }}</p>
+        <p class="error text-center fw-bolder" v-if="this.error != ''">{{ this.error }}</p>
         <label for="inputEmail" class="form-label text-white  fs-5">Email</label>
         <input  id="inputEmail" type="email" class="form-control" name="email"
         title="Entrer votre email" aria-label="champ email" required placeholder="Ex : exemple@gmail.com"
@@ -100,7 +102,7 @@ export default {
 
 <style>
 .error {
-  color: white;
+  color: rgb(136, 1, 52);
 }
 
 .bgForm {

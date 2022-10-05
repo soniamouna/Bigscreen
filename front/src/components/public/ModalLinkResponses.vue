@@ -72,12 +72,14 @@ export default {
       if (this.check == true) {
         // if the responses are validated, send them to database
         await axios.post(this.apiURL + "responses", { email: this.responses[1], responses: this.responses })
-          .then(response => { 
+          .then(response => {
+            console.log(response) 
             this.link = response.data.link // get the link for the new user 
             this.show = true // set show to true -> open modal
            
           })
           .catch(error => {
+            console.log(error)
             this.show = false
             // if the server has a problem return an error message for the error500
             if (error.response.status == 500) {
@@ -123,7 +125,7 @@ export default {
           </div>
           <div class="modal-body text-center">
             <!-- if check=true display the modal with the message for the user and the user's link -->
-            <p v-if="this.check">Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
+            <p v-if="this.show">Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
               votre investissement, nous vous préparons une application toujours plus
               facile à utiliser, seul ou en famille.
               Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
