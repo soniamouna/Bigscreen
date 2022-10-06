@@ -3,13 +3,13 @@ import axios from 'axios';
 
 export default {
     props: {
-            page: {
-                type: String
-            }
-        },
+        page: {
+            type: String
+        }
+    },
     data() {
         return {
-            apiURL:import.meta.env.VITE_BASE_API,
+            apiURL: import.meta.env.VITE_BASE_API,
         }
     },
     methods: {
@@ -17,7 +17,7 @@ export default {
         async logout() {
             const token = localStorage.getItem('token') //get the token in the localStorage
 
-            await axios.post(this.apiURL+"logout", null, {
+            await axios.post(this.apiURL + "logout", null, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + token,
@@ -27,9 +27,9 @@ export default {
                     localStorage.removeItem('token') //remove the token into the localStorage
                     window.location.href = "/login" // redirect to Login page
                 })
-                .catch(err =>  {
+                .catch(err => {
                     console.log(err)
-                    if(err.response.status==401){ 
+                    if (err.response.status == 401) {
                         alert("Vous êtes déjà déconnecté(e)")
                         window.location.href = "/login"
                     }
@@ -42,20 +42,23 @@ export default {
         // chek if token exist or not 
         if (!localStorage.getItem("token")) {
             alert("Veuillez vous reconnecter");
-            window.location.href = "/login"; 
+            window.location.href = "/login";
         }
     },
 }
 </script>
 
 <template>
-    <div class="col-12 col-md-12 col-lg-3  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
+    <div
+        class="col-12 col-md-12 col-lg-3 col-xl-3   navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
+        <!-- Navbar admin -->
         <nav class="col-12 m-auto navbar-expand-lg ">
             <div class="col-12 container-fluid ">
                 <div class="row m-auto col-12">
                     <div class="p-2 col-9 col-lg-12">
                         <!-- Logo -->
-                        <a class="col-12 col-lg-12 m-auto text-white text-center  navTitle navbar-brand " href="/administration">BIGSCREEN</a>
+                        <a class="col-12 col-lg-12 m-auto text-white text-center  logo navbar-brand "
+                            href="/administration">BIGSCREEN</a>
                     </div>
                     <div class="text-center toogleContainer col-3 col-lg-6">
                         <!-- Toggle button displaying navbar in small screen -->
@@ -66,20 +69,24 @@ export default {
                         </button>
                     </div>
                 </div>
-                
+
 
                 <div class="text-center collapse navbar-collapse pt-2" id="navbarSupportedContent">
                     <ul class=" navbar-nav m-auto  row col-lg-12">
                         <li class="nav-item">
-                            <a :class="this.page=='home'?'activeLink':'text-white nav-link'" href="/administration">Accueil</a>
+                            <a :class="this.page=='home'?' nav-link disabled':' nav-link'" 
+                                href="/administration">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a :class="this.page=='questions'?'activeLink':'text-white nav-link' "  href="/administration/questionnaire">Questionnaire</a>
+                            <a :class="this.page=='questions'?' nav-link disabled':' nav-link' " 
+                                href="/administration/questionnaire">Questionnaire</a>
                         </li>
-                        <li class="nav-item" >
-                            <a :class="this.page=='responses'?'activeLink':'text-white nav-link'" href="/administration/reponses">Réponses</a>
+                        <li class="nav-item">
+                            <a :class="this.page=='responses'?' nav-link disabled':' nav-link'" 
+                                href="/administration/reponses">Réponses</a>
                         </li>
-                        <button class="mt-2 btnDeco col-6 col-md-4 col-lg-6 m-auto p-1" @click="logout()">Déconnexion</button>
+                        <button class="mt-2 btnDeco col-6 col-md-4 col-lg-6 m-auto p-1"
+                            @click="logout()">Déconnexion</button>
                     </ul>
 
                 </div>
@@ -93,63 +100,47 @@ export default {
 
 
 <style>
+.navbar {
+    background-image: url(../../../img/navBackground.jpg);
+    background-size: cover;
+}
 
-   
-   .nav-link:hover{
+li>.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
     font-weight: bold;
-   }
-    .activeLink{
-        font-weight: bold;
-        color:white;
+    color: rgb(130, 134, 255);
+}
+
+.nav-link.disabled {
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+}
+
+.btnDeco {
+    border-radius: 8px;
+    background: rgb(130, 134, 255);
+    border: 1px solid white;
+    color: white;
+}
+
+.btnDeco:hover {
+    border-radius: 8px;
+    background: white;
+    border: 1px solid white;
+    color: rgb(130, 134, 255);
+    font-weight: bolder;
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 2560px) {
+    .navbar {
+        height: 100vh;
+        display: block;
     }
 
-    .activeLink:hover{
-        font-weight: bold;
-        color: rgb(130, 134, 255);
-    }
-  
-    .btnDeco{
-        border-radius: 8px;
-        background: rgb(130, 134, 255);
-        border: 1px solid white;
-        color:white;
-    }
-    .btnDeco:hover{
-        border-radius: 8px;
-        background: white;
-        border: 1px solid white;
-        color:rgb(130, 134, 255);
-        font-weight: bolder;
-    }
-    .navTitle{
-        font-weight: bolder;
-    }
-    
-    
-    
-    @media screen and (min-width: 800px) and (max-width: 2560px) {
-        .navbar {
-            height: 100vh;
-            display: block;
-            border-right: 1px solid black;
-            background-image: url(../../../img/navBackground.jpg);
-            background-size: cover;
-            
-            
-        }
-
-        
-        
-    }
-
-    
-    @media screen and (min-width: 300px) and (max-width: 768px) {
-        .navbar {
-          
-            background-image: url(../../../img/navBackground.jpg);
-            background-size: cover;
-            
-        }
-        
-    }
+}
 </style>
