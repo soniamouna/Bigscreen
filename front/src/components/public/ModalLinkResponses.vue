@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       show: false,
-      link: "", 
+      link: "",
       error: "",
       check: false,
       baseUrl: import.meta.env.VITE_BASE_URL,
@@ -32,7 +32,7 @@ export default {
     },
     checkResponses() {
       this.error = ""; // reset the error's message to an empty string
-      const reNotEmpty= /^(?!\s*$).+/ // regex not empty
+      const reNotEmpty = /^(?!\s*$).+/ // regex not empty
       for (const question of this.questions) {
         //for each question check if the response was complete or not
         if (!reNotEmpty.test(this.responses[question.id])) {
@@ -74,13 +74,11 @@ export default {
         // if the responses are validated, send them to database
         await axios.post(this.apiURL + "responses", { email: this.responses[1], responses: this.responses })
           .then(response => {
-            console.log(response) 
             this.link = response.data.link // get the link for the new user 
             this.show = true // set show to true -> open modal
-           
+
           })
           .catch(error => {
-            console.log(error)
             this.show = false
             // if the server has a problem return an error message for the error500
             if (error.response.status == 500) {
@@ -122,23 +120,29 @@ export default {
         <div class="modal-content">
           <div class="modal-header">
             <!-- Button to close the modal (X) -->
-            <button @click.prevent="reloadPage"  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button> 
+            <button @click.prevent="reloadPage" type="button" class="btn-close" data-bs-dismiss="modal"
+              aria-label="Fermer"></button>
           </div>
           <div class="modal-body text-center">
+            <div v-if="this.show">
+              <p>Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
+                votre investissement, nous vous préparons une application toujours plus
+                facile à utiliser, seul ou en famille.
+                Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
+                cette adresse:
+              </p> 
+              <a class="linkRespondent " :href="this.baseUrl+'reponses/' + this.link">
+                {{this.baseUrl+'reponses/'+this.link}}
+              </a>
+            </div>
             <!-- if check=true display the modal with the message for the user and the user's link -->
-            <p v-if="this.show">Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
-              votre investissement, nous vous préparons une application toujours plus
-              facile à utiliser, seul ou en famille.
-              Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
-              cette adresse:
-              <a class="linkRespondent"
-                :href="this.baseUrl+'reponses/' + this.link">{{this.baseUrl+'reponses/'+this.link}}</a>
-            </p>
+
             <p v-else>{{this.error}}</p>
           </div>
           <div class="modal-footer">
             <!-- Button to close the modal -->
-            <button @click.prevent="reloadPage" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button @click.prevent="reloadPage" type="button" class="btn btn-secondary"
+              data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>
@@ -148,9 +152,14 @@ export default {
 </template>
     
 <style>
+.br {
+  border: 1px solid red;
+}
+
 .linkRespondent {
   text-decoration: none;
   color: rgb(146, 38, 255);
+  word-break: break-all;
 
 }
 
