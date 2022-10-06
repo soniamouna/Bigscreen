@@ -131,6 +131,7 @@ export default {
                 Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
                 cette adresse:
               </p> 
+              <p class="fst-italic">(Veillez à conserver ce lien. Vous ne pourrez pas le récupérer par la suite)</p>
               <a class="linkRespondent " :href="this.baseUrl+'reponses/' + this.link">
                 {{this.baseUrl+'reponses/'+this.link}}
               </a>
