@@ -1,0 +1,28 @@
+@import "../base.css";
+
+.scroll-page {
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+/*** TABLES ***/
+tr,
+th,
+td
+{
+  border: 1px solid grey;
+}
+
+tr > th {
+  background-color: rgb(117, 129, 244);
+}
+
+/*** WORDS TABLE***/
+.break{
+  word-break:break-all;
+}
+.break-keep-all {
+    word-break:keep-all;
+  }
+  

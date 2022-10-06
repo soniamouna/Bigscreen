@@ -10,36 +10,30 @@ export default {
 </script>
 
 <template>
-    <div class=" m-auto row col-lg-12 col-md-12 col-12">
+    <div class=" m-auto row col-12 col-md-12 col-lg-12 ">
         <!-- Component navbar admin -->
         <NavbarAdmin page="home" />
-        <div class="scrollPage col-lg-9 col-xl-9 p-4 m-auto ">
-            <div class="col-lg-12 col-xl-12">
-                <div class="col-lg-12 col-xl-12 m-auto">
-                    <div class="m-auto pb-4 col-lg-12 col-xl-12 row">
-                        <!-- Display the differents Charts -->
-                        <!-- Piecharts Question 6 -->
-                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                            <PieCharts6 />
-                        </div>
-                        <!-- Piecharts Question 7 -->
+        <div class=" scroll-page col-12 col-md-9 col-lg-9 col-xl-9 pb-5 m-auto ">
+            <!-- Display the different Charts -->
+            <div class=" col-12 col-lg-12 col-xl-12 m-auto row d-flex justify-content-center justify-content-around g-4">
+                <!-- Piecharts Question 6 -->
+                <div class="chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                    <PieCharts6 />
+                </div>
+                <!-- Piecharts Question 7 -->
 
-                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                            <PieCharts7 />
-                        </div>
+                <div class=" chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                    <PieCharts7 />
+                </div>
 
-                    </div>
-                    <div class="m-auto col-lg-12 col-xl-12 row">
-                        <!-- Piecharts Question 10 -->
+                <!-- Piecharts Question 10 -->
 
-                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                            <PieCharts10 />
-                        </div>
-                        <!-- RadarCharts -->
-                        <div class="m-auto chartsContainer p-4 col-lg-5 col-xl-5">
-                            <RadarCharts />
-                        </div>
-                    </div>
+                <div class=" chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                    <PieCharts10 />
+                </div>
+                <!-- RadarCharts Question from 11 to 15 -->
+                <div class=" chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                    <RadarCharts />
                 </div>
 
             </div>
@@ -49,21 +43,7 @@ export default {
 
 
 
-<style>
-.scrollPage {
-    height: 100vh;
-    overflow-y: scroll;
-    scrollbar-width: thin;
+<style scoped>
+@import '../../assets/adminRight/adminRightSide.css'
 
-}
-
-.chartsContainer {
-    border: 1px solid black;
-    border-radius: 22px;
-}
-
-.titleWelcome {
-    font-weight: bolder;
-    border-bottom: 1px solid black;
-}
 </style>

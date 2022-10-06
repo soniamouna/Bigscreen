@@ -26,8 +26,8 @@ export default {
     <div class="row m-auto col-12 col-md-12 col-lg-12">
         <!-- Component navbar Admin -->
         <NavbarAdmin page="questions"/>
-        <div class="scrollPage col-lg-9 p-4 m-auto">
-            <h1>Liste des questions du sondage</h1>
+        <div class="scroll-page col-lg-9 p-4 m-auto">
+            <h1 class="fw-bolder text-center">Liste des questions du sondage</h1>
             <!-- If there is an error display the error's message -->
             <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
             <!-- Table with the questions'list -->
@@ -37,16 +37,5 @@ export default {
 </template>
 
 <style>
-.adminBackground {
-    background-color: rgb(255, 255, 255);
-    border-radius: 22px;
-    box-shadow: 10px 5px 5px rgb(167, 167, 167);
-    border: 1px solid black;
-}
-
-.scrollPage {
-    height: 100vh;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-}
+@import '../../assets/adminRight/adminRightSide.css'
 </style>

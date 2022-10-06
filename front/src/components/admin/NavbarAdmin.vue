@@ -50,7 +50,7 @@ export default {
 
 <template>
     <div
-        class="col-12 col-md-12 col-lg-3 col-xl-3   navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
+        class="br col-12 col-md-12 col-lg-3 col-xl-2  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
         <!-- Navbar admin -->
         <nav class="col-12 m-auto navbar-expand-lg ">
             <div class="col-12 container-fluid ">
@@ -85,7 +85,7 @@ export default {
                             <a :class="this.page=='responses'?' nav-link disabled':' nav-link'" 
                                 href="/administration/reponses">Réponses</a>
                         </li>
-                        <button class="mt-2 btnDeco col-6 col-md-4 col-lg-6 m-auto p-1"
+                        <button class="mt-2 btnDeco col-6 col-md-4 col-lg-8 m-auto p-1"
                             @click="logout()">Déconnexion</button>
                     </ul>
 
@@ -136,7 +136,7 @@ li>.nav-link {
 }
 
 
-@media screen and (min-width: 800px) and (max-width: 2560px) {
+@media screen and (min-width: 1000px) and (max-width: 2560px) {
     .navbar {
         height: 100vh;
         display: block;

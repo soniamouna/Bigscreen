@@ -22,13 +22,13 @@ export default {
     
 <template>
 
-    <div class="responsesBackground ">
+    <div class="my-4">
         <!-- If there is an error display an error's message -->
 
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <!-- For each respondent create a table of responses -->
 
-        <table v-else class="tabResponsesAppearance container mb-4 col-lg-12 m-auto mt-4 " v-for="response in responses"
+        <table v-else class=" table  col-lg-12 m-auto mt-4 " v-for="response in responses"
             :key="response.id">
             <tr class="text-white text-center">
                 <th>N°</th>
@@ -37,8 +37,8 @@ export default {
             </tr>
             <!-- For each question create a line into the table -->
             <tr v-for="question,i in questions" :key="question.id" class="col-lg-12">
-                <td class="break text-center col-lg-2">{{question.id}}</td>
-                <td class="break col-lg-6">{{question.title}}</td>
+                <td class=" text-center col-lg-1">{{question.id}}</td>
+                <td class="break-keep-all col-lg-7">{{question.title}}</td>
                 <td class="break text-center col-lg-3">{{response[i].value}}</td>
             </tr>
 
@@ -49,31 +49,6 @@ export default {
     
     
     
-<style>
-tr,
-td,
-th {
-    border: 1px solid grey;
-
-
-}
-
-tr>th {
-    background-color: rgb(117, 129, 244);
-}
-
-.tabResponsesAppearance {
-    background-color: rgba(255, 255, 255, 0.694);
-    backdrop-filter: blur(22px);
-}
-
-
-.responsesTitlePage {
-    border-bottom: 1px solid white;
-    font-weight: bolder;
-}
-
-.break {
-    word-break: break-all;
-}
+<style scoped>
+@import '../../assets/adminRight/adminRightSide.css';
 </style>
