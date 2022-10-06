@@ -32,8 +32,8 @@ export default {
       })
       .catch(
         (err) =>
-          (this.error =
-            "Une erreur est survenue. Veuillez recharger la page ultérieurement.")
+        (this.error =
+          "Une erreur est survenue. Veuillez recharger la page ultérieurement.")
       );
     // Define the different graph's params
     const ctx = document.getElementById("myChart7");
@@ -45,10 +45,10 @@ export default {
           label: "Graph question 7",
           data: this.chartDatas,
           backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(554, 162, 235)",
-            "rgb(25, 205, 86)",
-            "rgb(765, 205, 86)",
+            "#D2ABFF",
+            "#9EE4FF",
+            "#81FFC1",
+            "#FFED90",
           ],
           hoverOffset: 4,
         },
@@ -61,7 +61,7 @@ export default {
     };
 
     const myChart7 = new Chart(ctx, {
-      type: "doughnut",
+      type: "pie",
       data: data,
     });
 
@@ -75,7 +75,8 @@ export default {
     <!-- Graph's title -->
 
     <p>
-      <span class="fw-bolder">Question 7 :</span> Achats des contenus VR en fonction des différents magasins d'application
+      <span class="fw-bolder">Question 7 :</span> Achats des contenus VR en fonction des différents magasins
+      d'application
     </p>
     <!-- If there is an error, an error message will be display -->
     <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error != ''">
@@ -86,15 +87,11 @@ export default {
       {{ this.message }}
     </p>
     <!-- Else display the graph -->
-    <canvas
-      v-else
-      id="myChart7"
-      width="400"
-      height="400"
-      aria-label="Graph-achats-contenus-VR"
-      role="graphique">
+    <canvas v-else id="myChart7" width="400" height="400" aria-label="Graph-achats-contenus-VR" role="graphique">
     </canvas>
   </div>
 </template>
 
-<style></style>
+<style>
+
+</style>
