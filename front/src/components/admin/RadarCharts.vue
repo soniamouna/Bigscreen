@@ -5,37 +5,37 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            averages:[],
-            error:"",
-            apiURL:import.meta.env.VITE_BASE_API,
-            message:""
+            averages: [],
+            error: "",
+            apiURL: import.meta.env.VITE_BASE_API,
+            message: ""
 
         }
     },
     methods: {
-        
+
     },
     async mounted() {
         const token = localStorage.getItem("token") //get the token into the localStorage
 
-        await axios.get(this.apiURL+"quality",{ // get the averages of the different users choices for the question 11 to 15
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-            })
-        .then((response) => {
-            if (response.status == 204) {
+        await axios.get(this.apiURL + "quality", { // get the averages of the different users choices for the question 11 to 15
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+        })
+            .then((response) => {
+                if (response.status == 204) {
                     this.message = "Aucun sondage enregistré"
                 } else {
-                    this.averages=response.data // get the different averages
+                    this.averages = response.data // get the different averages
                 }
-                    
-                    
-            })
-            .catch((err) =>this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
-                   // Define the different graph's params
+
+            })
+            .catch((err) => this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.");
+
+        // Define the different graph's params
 
         const ctx = document.getElementById('myRadarChart');
         const data = {
@@ -48,7 +48,7 @@ export default {
             ],
             datasets: [{
                 label: 'Moyenne de la qualité de Bigscreen',
-                data: this.averages ,
+                data: this.averages,
                 fill: true,
                 backgroundColor: '#D2ABFF',
                 borderColor: '#A354FF',
@@ -57,12 +57,12 @@ export default {
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(255, 99, 132)'
             }],
-            options:[{
-                responsive:true
+            options: [{
+                responsive: true
             }]
         };
 
-       
+
 
         const myRadarChart = new Chart(ctx, {
             type: 'radar',
@@ -73,11 +73,11 @@ export default {
                         borderWidth: 3
                     }
                 }
-                
+
             },
         });
-        
-        
+
+
         return myRadarChart;
 
     }
@@ -90,11 +90,19 @@ export default {
 <template>
 
     <div>
-        <p><span class="fw-bolder">Question 11 à 15 :</span> Moyenne de la qualité des services de Bigscreen</p>
-        <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
-        <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
+        <!-- Graph's title -->
 
-        <canvas v-else id="myRadarChart" width="400" height="400" aria-label="Graph-moyenne-qualité" role="graphique"></canvas>
+        <p><span class="fw-bolder">Question 11 à 15 :</span> Moyenne de la qualité des services de Bigscreen</p>
+        <!-- If there is an error, an error's message will be display -->
+
+        <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
+        <!-- Else if there are no responses yet display a message for the admin -->
+
+        <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
+        <!-- Else display the graph -->
+
+        <canvas v-else id="myRadarChart" width="400" height="400" aria-label="Graph-moyenne-qualité"
+            role="graphique"></canvas>
     </div>
 
 </template>

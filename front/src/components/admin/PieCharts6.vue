@@ -72,7 +72,7 @@ export default {
     <div>
         <!-- Graph's title -->
         <p><span class="fw-bolder">Question 6 :</span> Utilisations des casques VR en fonction des différentes marques </p>
-        <!-- If there is an error, an error message will be display -->
+        <!-- If there is an error, an error's message will be display -->
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <!-- Else if there are no responses yet display a message for the admin -->
         <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.message!=''">{{this.message}}</p>
