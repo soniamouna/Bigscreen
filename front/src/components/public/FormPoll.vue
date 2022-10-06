@@ -51,7 +51,7 @@ export default {
             <div   v-if="question.type === 'A'">
               <div  v-for="(choice, index) in question.choices" :key="index">
                 <div class="col-12 col-md-4 col-lg-6 row m-auto">
-                  <div class="col-2 col-md-2 col-lg-2">
+                  <div class="col-2 col-md-2 col-lg-2 ">
                     <!-- For each choice, create radio button with a value corresponding to the choice-->
                     <input :id="'radio'+index+'-'+question.id"  class="m-auto" type="radio" :value="choice" :name="question.id"
                       v-model="responses[question.id]"  />
@@ -67,14 +67,14 @@ export default {
             <div class="text-center" v-else-if="question.type === 'B'">
               <!-- If question 1 => input email -->
               <div v-if="question.id === 1">
-                <label for="email" class="text-white">Saisissez votre email ci-dessous :</label>
+                <label for="email" class="text-white">Saisissez votre email :</label>
                 <input id="email" class="col-10 rounded-3 col-lg-8 pb-2 pb-2" type="email" :name="question.id"
                   title="Entrer votre email" aria-label="champ email" placeholder="exemple@gmail.com" required
                   maxlength="255" v-model="responses[question.id]" />
               </div>
               <!-- If question 2 => input age -->
               <div v-else-if="question.id === 2">
-                <label for="age" class="text-white">Saisissez votre âge ci-dessous :</label>
+                <label for="age" class="text-white">Saisissez votre âge :</label>
                 <input id="age" class="col-10 rounded-3 col-lg-8 pb-2 pb-2"  type="text" :name="question.id"
                 title="Entrer votre âge" aria-label="champ âge" placeholder="ex : 12" maxlength="3" v-model="responses[question.id]" />
               </div>
