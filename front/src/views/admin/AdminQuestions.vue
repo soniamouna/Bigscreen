@@ -36,6 +36,6 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 @import '../../assets/adminRight/adminRightSide.css'
 </style>
