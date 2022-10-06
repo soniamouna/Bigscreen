@@ -71,9 +71,7 @@ export default {
 
 <template>
   <div>
-    <!-- Display the error's message if there is an error500  -->
-    <p class="errorMsg fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto"
-      v-if="this.statusCode==500 && this.error!=''">{{this.error}}</p>
+    
     <!-- Login form to sign in -->
     <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center">
       <div class="mb-3">

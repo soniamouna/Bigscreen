@@ -34,6 +34,8 @@ export default {
                         window.location.href = "/login"
                     }
                     alert("Une erreur est survenue. Veuillez recharger la page ultérieurement.")
+                    window.location.href = "/login"
+
                 });
         }
     },
