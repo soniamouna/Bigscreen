@@ -45,11 +45,11 @@ export default {
                     label: "Graph question 10",
                     data: this.chartDatas,
                     backgroundColor: [
-                        "rgb(255, 99, 132)",
-                        "rgb(54, 162, 235)",
-                        "rgb(255, 205, 86)",
-                        "rgb(255, 20, 86)",
-                        "rgb(255, 205, 186)",
+                        "#D2ABFF",
+                        "#9EE4FF",
+                        "#81FFC1",
+                        "#FFED90",
+                        "#FFB5AB",
                     ],
                     hoverOffset: 4,
                 },
@@ -62,7 +62,7 @@ export default {
         };
 
         const myChart10 = new Chart(ctx, {
-            type: "doughnut",
+            type: "pie",
             data: data,
         });
 
