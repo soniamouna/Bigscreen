@@ -92,7 +92,7 @@ export default {
     <div>
         <!-- Graph's title -->
 
-        <p><span class="fw-bolder">Question 11 à 15 :</span> Moyenne de la qualité des services de Bigscreen</p>
+        <p><span class="fw-bolder">Questions 11 à 15 :</span> Moyenne de la qualité des services de Bigscreen</p>
         <!-- If there is an error, an error's message will be display -->
 
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
