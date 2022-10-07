@@ -109,7 +109,7 @@ export default {
     <!-- Button trigger modal -->
     <div class="col-lg-12 text-center">
       <!-- The button will display a modal and call the function addResponses() -->
-      <button @click="addResponses()" type="button" class="sendButton" data-bs-toggle="modal"
+      <button @click="addResponses()" type="button" class=" sendButton" data-bs-toggle="modal"
         data-bs-target="#modalPoll">
         FINALISER
       </button>
@@ -153,6 +153,10 @@ export default {
 </template>
     
 <style>
+.br {
+  border: 1px solid red;
+}
+
 .linkRespondent {
   text-decoration: none;
   color: rgb(146, 38, 255);
@@ -163,6 +167,7 @@ export default {
 .linkRespondent:hover {
   text-decoration: underline;
   color: rgb(146, 38, 255);
+
 }
 
 @media screen and (min-width: 800px) and (max-width: 4000px) {
@@ -191,6 +196,7 @@ export default {
     --slice-4: inset(40% -6px 43% 0);
     --slice-5: inset(80% -6px 5% 0);
 
+    content: 'FINALISER';
     display: block;
     position: absolute;
     top: 0;
