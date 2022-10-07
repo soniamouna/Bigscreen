@@ -109,7 +109,7 @@ export default {
     <!-- Button trigger modal -->
     <div class="col-lg-12 text-center">
       <!-- The button will display a modal and call the function addResponses() -->
-      <button @click="addResponses()" type="button" class=" sendButton" data-bs-toggle="modal"
+      <button @click="addResponses()" type="button" class="sendButton" data-bs-toggle="modal"
         data-bs-target="#modalPoll">
         FINALISER
       </button>

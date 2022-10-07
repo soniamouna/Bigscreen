@@ -23,7 +23,7 @@ export default {
         });
       })
       .catch((err) => {
-        if (err.response.status == 500) { // if the server has an problem, return a message, for the user, corresponding to error500
+        if (err.response.status == 500 || this.questions.length==0) { // if the server has an problem, return a message, for the user, corresponding to error500
           this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.";
         }
       });
