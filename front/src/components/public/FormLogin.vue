@@ -24,11 +24,10 @@ export default {
       if (this.v$.$error == true) {
         event.preventDefault();
       } else {
-        await axios
-          .post(this.apiURL + "login", { // send the credentials to log in    
-            email: this.email,
-            password: this.password,
-          })
+        await axios.post(this.apiURL + "login", { // send the credentials to log in    
+          email: this.email,
+          password: this.password,
+        })
           .then((response) => {
             // Check if "token" exist in localStorage
             const localToken = localStorage.getItem("token");
@@ -71,32 +70,35 @@ export default {
 
 <template>
   <div>
-    
+
     <!-- Login form to sign in -->
-    <form @submit.prevent="login" class="p-5 m-auto bgForm rounded-5 col-lg-6 row d-flex justify-content-center">
+    <form @submit.prevent="login" class="bgForm rounded-5 row d-flex justify-content-center m-auto p-5 col-lg-6 ">
       <div class="mb-3">
         <!-- Display error's message if the user enters wrong credentials -->
-        <p class="error text-center fw-bolder" v-if="this.error != ''">{{ this.error }}</p>
+        <p v-if="this.error != ''" class="error text-center fw-bolder">{{ this.error }}</p>
+
         <!-- Email field -->
         <label for="inputEmail" class="form-label text-white  fs-5">Email</label>
         <input id="inputEmail" type="email" class="form-control" name="email" title="Entrer votre email"
           aria-label="champ email" required placeholder="Ex : exemple@gmail.com" v-model="this.email" />
         <!-- display error's message based on form validations -->
-        <div class="error" v-if="v$.email.$error">
+        <div v-if="v$.email.$error" class="error">
           {{ v$.email.$errors[0].$message }}
         </div>
       </div>
+
       <div class="mb-4">
         <!-- Password field -->
-        <label for="inputPassword" class="form-label text-white  fs-5">Password</label>
+        <label for="inputPassword" class="form-label text-white fs-5">Password</label>
         <input id="inputPassword" type="password" class="form-control" name="password" title="Entrer votre mot de passe"
           aria-label="champ mot de passe" required placeholder="Entrez votre mot de passe" v-model="this.password" />
         <!-- display error's message based on form validations -->
-        <div class="error" v-if="v$.password.$error">
+        <div v-if="v$.password.$error" class="error">
           {{ v$.password.$errors[0].$message }}
         </div>
       </div>
-      <button type="submit" class="btnLogin col-10 col-md-5 col-lg-8 col-xl-10  col-xxl-8 p-2 m-auto fs-5 fw-bolder">
+
+      <button type="submit" class="btnLogin fs-5 fw-bolder m-auto p-2 col-10 col-md-5 col-lg-8 col-xl-10  col-xxl-8   ">
         Se connecter
       </button>
     </form>

@@ -15,58 +15,57 @@ class ResponseController extends Controller
     // Return a response with the different response's average (for the question 11 to 15)
     public function getQuality()
     {
-        $allResponses=Response::getAll(); // Get the whole responses
+        $allResponses = Response::getAll(); // Get the whole responses
         // if there is no response in the database <=> no poll completed by an user
-        if(count($allResponses)==0){
+        if (count($allResponses) == 0) {
             return response()->json([
                 "message" => "Aucun sondage enregistré" // return a message
-            ],204);
-        }else{ // if Response isn't empty
-        $questionIds = [11, 12, 13, 14, 15];
-        $answersAverage = [];
-        // get the different responses'average to the question 11 to 15
-        foreach ($questionIds as $id) {
-            $averages = Response::where('questionId', $id)->get()->avg('value'); 
-            array_push($answersAverage, $averages);
+            ], 204);
+        } else { // if Response isn't empty
+            $questionIds = [11, 12, 13, 14, 15];
+            $responsesAverage = [];
+            // get the different responses'average to the question 11 to 15
+            foreach ($questionIds as $id) {
+                $averages = Response::where('questionId', $id)->get()->avg('value');
+                array_push($responsesAverage, $averages);
+            }
+            return response()->json($responsesAverage);
         }
-        return response()->json($answersAverage);
-    }
     }
 
     // Return a response with the numbers of times where a choice was selected by the different users
     public function getVrInfos($id)
     {
-        $allResponses=Response::getAll();// Get the whole responses
+        $allResponses = Response::getAll(); // Get the whole responses
         // if there is no response in the database <=> no poll completed by an user
-        if(count($allResponses)==0){
+        if (count($allResponses) == 0) {
             return response()->json([
                 "message" => "Aucun sondage enregistré" // return a message
-            ],204);
-        }else{
+            ], 204);
+        } else {
             $responses = Response::getByQuestionId($id); //get all responses by question's id
             $question = Question::getById($id); // get question by question's id
             $options = json_decode($question->choices); // get question's choices
             $stats = [];
-    
-            foreach ($options as $option) { 
-    
+
+            foreach ($options as $option) {
+
                 $count = 0;
                 foreach ($responses as $response) {
                     // if the choice was selected by an user -> increment $count
-                    if ($response->value == $option) {  
-    
-                        $count = $count += 1; 
+                    if ($response->value == $option) {
+
+                        $count = $count += 1;
                     }
                 }
                 array_push($stats, $count);
             }
-    
+
             return response()->json([ // return response with labels and numbers of times where a choice was selected
                 "labels" => $options,
                 "chartDatas" => $stats
-            ],200);
+            ], 200);
         }
-        
     }
     /**
      * Display a listing of the resource group by 'respondentId'.
@@ -77,13 +76,13 @@ class ResponseController extends Controller
     {
 
         $responses = Response::getAll()->groupBy("respondentId");
-        if(count($responses)==0){ 
+        if (count($responses) == 0) {
             return response()->json([
                 "message" => "Aucun sondage enregistré" // if it's empty return this message
-            ],204);
-        }else{
-        return response()->json($responses); // otherwise return the whole responses
-    }
+            ], 204);
+        } else {
+            return response()->json($responses); // otherwise return the whole responses
+        }
     }
 
     /**
@@ -138,7 +137,7 @@ class ResponseController extends Controller
      */
     public function show($id)
     {
-        $responses = Response::getByRespondentId($id);
+        $responses = Response::getByRespondentId($id); //get the response by the respondent's id
         if ($responses == null) {
             return response()->json([
                 'error' => "Unauthorized. No respondent matches in database",

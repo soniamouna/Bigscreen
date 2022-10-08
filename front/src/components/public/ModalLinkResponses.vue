@@ -76,7 +76,6 @@ export default {
           .then(response => {
             this.link = response.data.link // get the link for the new user 
             this.show = true // set show to true -> open modal
-
           })
           .catch(error => {
             this.show = false
@@ -84,30 +83,20 @@ export default {
             if (error.response.status == 500) {
               this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.";
             } else { // if it's a problem about the responses return an error message related to the validations
-
               this.error = error.response.data.message
             }
-
-
           })
       }
     }
   }
 }
 
-
-
-
-
-
-
-
 </script>
     
 <template>
   <div class="pb-5">
     <!-- Button trigger modal -->
-    <div class="col-lg-12 text-center">
+    <div class="text-center col-lg-12 ">
       <!-- The button will display a modal and call the function addResponses() -->
       <button @click="addResponses()" type="button" class=" sendButton" data-bs-toggle="modal"
         data-bs-target="#modalPoll">
@@ -123,6 +112,7 @@ export default {
             <button @click.prevent="reloadPage" type="button" class="btn-close" data-bs-dismiss="modal"
               aria-label="Fermer"></button>
           </div>
+
           <div class="modal-body text-center">
             <div v-if="this.show">
               <p>Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
@@ -130,16 +120,17 @@ export default {
                 facile à utiliser, seul ou en famille.
                 Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
                 cette adresse:
-              </p> 
+              </p>
               <p class="fst-italic">(Veillez à conserver ce lien. Vous ne pourrez pas le récupérer par la suite)</p>
               <a class="linkRespondent " :href="this.baseUrl+'reponses/' + this.link">
                 {{this.baseUrl+'reponses/'+this.link}}
               </a>
             </div>
-            <!-- if check=true display the modal with the message for the user and the user's link -->
 
+            <!-- if check=true display the modal with the message for the user and the user's link -->
             <p v-else>{{this.error}}</p>
           </div>
+          
           <div class="modal-footer">
             <!-- Button to close the modal -->
             <button @click.prevent="reloadPage" type="button" class="btn btn-secondary"

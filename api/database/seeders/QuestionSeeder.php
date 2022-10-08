@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Question;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class QuestionSeeder extends Seeder
@@ -15,6 +14,7 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
+        // initialization of the whole questions in an array
         $questions = [
             [
                 'title' => 'Votre adresse mail',
@@ -31,7 +31,7 @@ class QuestionSeeder extends Seeder
             [
                 'title' => 'Votre sexe',
                 'type' => 'A',
-                'choices' => json_encode(["Homme","Femme","Préfère ne pas répondre"]),
+                'choices' => json_encode(["Homme", "Femme", "Préfère ne pas répondre"]),
                 'created_at' => now()
             ],
             [
@@ -49,19 +49,19 @@ class QuestionSeeder extends Seeder
             [
                 'title' => 'Quelle marque de casque VR utilisez vous ?',
                 'type' => 'A',
-                'choices' => json_encode(['Oculus Quest','Occulus Rift/s','HTC Vive','Windows Mixed Reality','PSVR']),
+                'choices' => json_encode(['Oculus Quest', 'Occulus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'PSVR']),
                 'created_at' => now()
             ],
             [
                 'title' => 'Sur quel magasin d’application achetez vous des contenus VR ?',
                 'type' => 'A',
-                'choices' => json_encode(['SteamVR','Occulus store','Viveport','Windows store']),
+                'choices' => json_encode(['SteamVR', 'Occulus store', 'Viveport', 'Windows store']),
                 'created_at' => now()
             ],
             [
                 'title' => 'Quel casque envisagez vous d’acheter dans un futur proche ?',
                 'type' => 'A',
-                'choices' => json_encode(['Occulus Quest','Occulus Go','HTC Vive Pro','PSVR','Autre','Aucun']),
+                'choices' => json_encode(['Occulus Quest', 'Occulus Go', 'HTC Vive Pro', 'PSVR', 'Autre', 'Aucun']),
                 'created_at' => now()
             ],
             [
@@ -73,7 +73,7 @@ class QuestionSeeder extends Seeder
             [
                 'title' => 'Vous utilisez principalement Bigscreen pour :',
                 'type' => 'A',
-                'choices' => json_encode(['regarder la TV en direct','regarder des films','travailler','jouer en solo','jouer en équipe']),
+                'choices' => json_encode(['regarder la TV en direct', 'regarder des films', 'travailler', 'jouer en solo', 'jouer en équipe']),
                 'created_at' => now()
             ],
             [
@@ -137,7 +137,7 @@ class QuestionSeeder extends Seeder
                 'created_at' => now()
             ]
         ];
-
+        //for each question, insert it into the database
         foreach ($questions as $question) {
             Question::create($question);
         }

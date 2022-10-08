@@ -8,7 +8,7 @@ export default {
             chartDatas: [],
             error: "",
             apiURL: import.meta.env.VITE_BASE_API,
-            message:""
+            message: ""
         };
     },
     async mounted() {
@@ -22,7 +22,7 @@ export default {
                 },
             })
             .then((response) => {
-                if (response.status == 204) { 
+                if (response.status == 204) {
                     this.message = "Aucun sondage enregistré"
                 } else {
                     this.labels = response.data.labels; // get the different possibles choices
@@ -32,7 +32,7 @@ export default {
             })
             .catch((err) => this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
-            // Define the different graph's params
+        // Define the different graph's params
         const ctx = document.getElementById("myChart6");
 
         const data = {
@@ -71,7 +71,8 @@ export default {
 <template>
     <div>
         <!-- Graph's title -->
-        <p><span class="fw-bolder">Question 6 :</span> Utilisations des casques VR en fonction des différentes marques </p>
+        <p><span class="fw-bolder">Question 6 :</span> Utilisations des casques VR en fonction des différentes marques
+        </p>
         <!-- If there is an error, an error's message will be display -->
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <!-- Else if there are no responses yet display a message for the admin -->

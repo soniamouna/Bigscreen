@@ -16,10 +16,10 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::getAll(); //Get the whole questions from the database 
-        if(!$questions) return response()->json(['error' => 'No questions found in database'], 404); //Error if there are no questions
+        if (!$questions) return response()->json(['error' => 'No questions found in database'], 404); //Error if there are no questions
         //if the question's type === 'A' 
         //decode 'choices' before send the response json
-        $questionsResponseJson = []; 
+        $questionsResponseJson = [];
         foreach ($questions as $question) {
             if ($question->type === 'A') {
                 $JSONItem = [
@@ -36,7 +36,6 @@ class QuestionController extends Controller
                 ];
             }
             array_push($questionsResponseJson, $JSONItem);
-            
         }
         return response()->json($questionsResponseJson, 200); //Return a json response
     }

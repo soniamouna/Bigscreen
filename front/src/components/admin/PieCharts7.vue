@@ -14,8 +14,7 @@ export default {
   async mounted() {
     const token = localStorage.getItem("token"); //get the token into the localStorage
 
-    await axios
-      .get(this.apiURL + "infosVR/7", {
+    await axios.get(this.apiURL + "infosVR/7", {
         // get the different users choices for the question 7
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +72,6 @@ export default {
 <template>
   <div>
     <!-- Graph's title -->
-
     <p>
       <span class="fw-bolder">Question 7 :</span> Achats des contenus VR en fonction des différents magasins
       d'application

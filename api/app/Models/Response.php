@@ -14,13 +14,14 @@ class Response extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['value','questionId', 'respondentId'];
+    protected $fillable = ['value', 'questionId', 'respondentId'];
 
     /**
      * question
      * relationship associate to Question
      */
-    public function question() {
+    public function question()
+    {
         return $this->belongsTo(Question::class, 'questionId');
     }
 
@@ -28,14 +29,15 @@ class Response extends Model
      * respondent
      * relationship associate to Respondent
      */
-    public function respondent() {
+    public function respondent()
+    {
         return $this->belongsTo(Respondent::class, 'respondentId');
     }
 
     /**
      * getAll
      * return a list of the whole responses
-     */ 
+     */
     public static function getAll()
     {
         $responses = self::all();
@@ -57,7 +59,7 @@ class Response extends Model
      */
     public static function getByRespondentId($idRespondent)
     {
-        $responses = self::where('respondentId',$idRespondent)->get();
+        $responses = self::where('respondentId', $idRespondent)->get();
         return $responses;
     }
 }

@@ -28,8 +28,7 @@ export default {
         <p class=" fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>
         <!-- For each respondent create a table of responses -->
 
-        <table v-else class=" table  col-lg-12 m-auto mt-4 " v-for="response in responses"
-            :key="response.id">
+        <table v-else class=" table m-auto mt-4 col-lg-12 " v-for="response in responses" :key="response.id">
             <tr class="text-white text-center">
                 <th>N°</th>
                 <th>Questions</th>

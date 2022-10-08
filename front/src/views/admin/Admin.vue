@@ -48,17 +48,18 @@ export default {
     components: { NavbarAdmin }
 }
 </script>
-    
+        
 <template>
-    <div class=" row col-lg-12 col-xl-12 m-0">
+    <div class=" row m-0 col-lg-12 col-xl-12 ">
+        <!-- Navbar Admin component -->
         <NavbarAdmin />
+        <!-- All the admin's page -->
         <router-view class="scroll-page"></router-view>
-
     </div>
 </template>
-    
-    
-    
+        
+        
+        
 <style>
 
 </style>

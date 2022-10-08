@@ -34,7 +34,7 @@ export default {
                 (this.error =
                     "Une erreur est survenue. Veuillez recharger la page ultérieurement.")
             );
-            // Define the different graph's params
+        // Define the different graph's params
 
         const ctx = document.getElementById("myChart10");
 

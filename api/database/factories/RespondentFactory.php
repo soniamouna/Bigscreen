@@ -18,7 +18,7 @@ class RespondentFactory extends Factory
     public function definition()
     {
         return [
-            'email' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->unique()->safeEmail, //unique email
             'link' => Str::uuid(), //unique identifier
         ];
     }

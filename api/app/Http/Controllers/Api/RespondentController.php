@@ -37,21 +37,20 @@ class RespondentController extends Controller
      */
     public function show($link)
     {
-        $respondent=Respondent::getByLink($link); //Get the respondent by link
-        if($respondent==null){ //send error if the respondent doesn't exist 
+        $respondent = Respondent::getByLink($link); //Get the respondent by link
+        if ($respondent == null) { //send error if the respondent doesn't exist 
             return response()->json([
                 'error' => "Unauthorized. No respondent matches in database",
                 'message' => "Veuillez répondre au questionnaire afin de pouvoir consulter les réponses de votre sondage."
 
-              
-            ],404);
-        }else{ // send a success response with the respondent's informations
-             return response()->json([
-            'message' => 'Success',
-            'respondent'=> $respondent
-        ],200);
+
+            ], 404);
+        } else { // send a success response with the respondent's informations
+            return response()->json([
+                'message' => 'Success',
+                'respondent' => $respondent
+            ], 200);
         }
-       
     }
 
     /**

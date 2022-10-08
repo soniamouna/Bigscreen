@@ -24,7 +24,7 @@ Route::get('responses/{link}', [ResponseController::class, 'show']);
 
 Route::resource('respondents', RespondentController::class);
 
-Route::controller(AuthController::class)->group(function(){
+Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
 });
 

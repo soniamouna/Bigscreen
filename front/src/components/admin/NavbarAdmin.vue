@@ -40,75 +40,55 @@ export default {
         },
     },
 
-    mounted() {
-        // chek if token exist or not
-        if (!localStorage.getItem("token")) {
-            alert("Veuillez vous reconnecter");
-            window.location.href = "/login";
-        }
-    },
+   
 }
 </script>
 
 <template>
     <div
-            class=" col-12 col-md-12 col-lg-3 col-xl-2  navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center">
-            <!-- Navbar admin -->
-            <nav role="navigation" class="col-12 m-auto navbar-expand-lg ">
-                <div class="col-12 container-fluid ">
-                    <div class="row m-auto col-12">
-                        <div class="p-2 col-9 col-lg-12">
-                            <!-- Logo -->
-                            <a class="col-12 col-lg-12 m-auto text-white text-center  logo navbar-brand "
-                                href="/administration">BIGSCREEN</a>
-                        </div>
-                        <div class="text-center toogleContainer col-3 col-lg-6">
-                            <!-- Toggle button displaying navbar in small screen -->
-                            <button class="border-light border-2 navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon navbar-dark "></span>
-                            </button>
-                        </div>
+        class=" navbar navbar-expand-lg   d-flex justify-content-lg-center text-lg-center col-12 col-md-12 col-lg-3 col-xl-2 ">
+        <!-- Navbar admin -->
+        <nav role="navigation" class="navbar-expand-lg m-auto col-12 ">
+            <div class="container-fluid col-12 ">
+                <div class="row m-auto col-12">
+                    <div class="p-2 col-9 col-lg-12">
+                        <!-- Logo -->
+                        <a class="logo text-white text-center  navbar-brand m-auto col-12 col-lg-12 "
+                            href="/administration">BIGSCREEN</a>
                     </div>
-    
-    
-                    <div  class="text-center collapse navbar-collapse pt-2" id="navbarSupportedContent">
-                        <ul class=" navbar-nav m-auto  row col-lg-12">
-                            <!-- <li class="nav-item">
-                            
-                           
-                                <a class="nav-link"  
-                                    href="/administration" >Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "  
-                                    href="/administration/questionnaire">Questionnaire</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" 
-                                    href="/administration/reponses">Réponses</a>
-                            </li> -->
-
-                            <li class="nav-item">
-                                <router-link class="nav-link"  :to="{name:'adminCharts'}">Accueil</router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link class="nav-link"  :to="{name:'adminQuestions'}">Questions</router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link class="nav-link"  :to="{name:'adminResponses'}">Réponses</router-link>
-                            </li>
-                            <button class="mt-2 btnDeco col-6 col-md-4 col-lg-8 m-auto p-1"
-                                @click="logout()">Déconnexion</button>
-                        </ul>
-    
+                    <div class="toogleContainer text-center col-3 col-lg-6">
+                        <!-- Toggle button displaying navbar in small screen -->
+                        <button class="border-light border-2 navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon navbar-dark "></span>
+                        </button>
                     </div>
-    
                 </div>
-            </nav>
-    
-        </div>
+
+
+                <div class="text-center collapse navbar-collapse pt-2" id="navbarSupportedContent">
+                    <ul class="row  navbar-nav m-auto  col-lg-12">
+
+                        <li class="nav-item">
+                            <router-link class="nav-link" :to="{name:'adminCharts'}">Accueil</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" :to="{name:'adminQuestions'}">Questions</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" :to="{name:'adminResponses'}">Réponses</router-link>
+                        </li>
+                        <button class="btnDeco p-1 m-automt-2 col-6 col-md-4 col-lg-8 "
+                            @click="logout()">Déconnexion</button>
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </div>
 </template>
 
 
@@ -122,11 +102,13 @@ export default {
 .nav-link {
     color: white;
 }
+
 .nav-link:focus {
     font-weight: bold;
     color: white;
     text-decoration: underline;
 }
+
 .nav-link:hover {
     font-weight: bold;
     color: white;

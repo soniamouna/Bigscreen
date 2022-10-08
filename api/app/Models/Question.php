@@ -25,14 +25,15 @@ class Question extends Model
      * responses
      * relationship associate to Response
      */
-    public function responses() { 
+    public function responses()
+    {
         return $this->hasMany(Response::class);
     }
 
     /**
      * getAll
      * return a list of the whole questions
-     */ 
+     */
     public static function getAll()
     {
         $questions = self::all();
@@ -45,7 +46,7 @@ class Question extends Model
      */
     public static function getById($id)
     {
-        $question = self::where('id',$id)->first();
+        $question = self::where('id', $id)->first();
         return $question;
     }
 }

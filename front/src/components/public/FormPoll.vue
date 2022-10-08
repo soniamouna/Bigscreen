@@ -14,8 +14,8 @@ export default {
   },
 
   mounted() {
-    
-    axios.get(this.apiURL + "questions") 
+
+    axios.get(this.apiURL + "questions")
       .then((response) => {
         this.questions = response.data; // Get the whole questions
         this.questions.forEach((element) => { // For each question create an empty element into the response's table with id's question
@@ -23,8 +23,8 @@ export default {
         });
       })
       .catch((err) => {
-        if (err.response.status == 500 || this.questions.length==0) { // if the server has an problem, return a message, for the user, corresponding to error500
-          this.error ="Une erreur est survenue. Veuillez recharger la page ultérieurement.";
+        if (err.response.status == 500 || this.questions.length == 0) { // if the server has an problem, return a message, for the user, corresponding to error500
+          this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.";
         }
       });
   },
@@ -36,66 +36,72 @@ export default {
   <!-- Form Poll Component -->
   <div id="form">
     <!-- If server send an error the paragraph will display -->
-    <p v-if="this.error !== ''" class="rounded-2 fw-bold p-5 mb-5 fs-4 bg-light text-center col-lg-8 m-auto">
+    <p v-if="this.error !== ''" class="bg-light rounded-2 fw-bold fs-4 p-5 text-center m-auto mb-5 col-lg-8 ">
       {{ this.error }}
     </p>
     <form>
       <div class="col-12 col-lg-12" v-for="question in this.questions" :key="question.id">
-        <div class="form-container mt-4 mb-4 col-lg-6 m-auto p-lg-4 pt-4 pb-4">
+        <div class="form-container m-auto my-4 p-lg-4 py-4 col-lg-6">
           <!-- Informations about the question -->
           <FormQuestionInfos :id="question.id" :length="this.questions.length" :title="question.title" />
 
           <!--Choices -->
-          <div class="dot-border pb-4 pt-4 col-12 col-lg-12 m-auto">
+          <div class="dot-border m-auto py-4 col-12 col-lg-12 ">
             <!-- Type A -->
-            <div   v-if="question.type === 'A'">
-              <div  v-for="(choice, index) in question.choices" :key="index">
-                <div class="col-12 col-md-4 col-lg-6 row m-auto">
+            <div v-if="question.type === 'A'">
+              <div v-for="(choice, index) in question.choices" :key="index">
+                <div class="row m-auto col-12 col-md-4 col-lg-6 ">
                   <div class="col-2 col-md-2 col-lg-2 ">
                     <!-- For each choice, create radio button with a value corresponding to the choice-->
-                    <input :id="'radio'+index+'-'+question.id"  class="m-auto" type="radio" :value="choice" :name="question.id"
-                      v-model="responses[question.id]"  />
+                    <input :id="'radio'+index+'-'+question.id" class="m-auto" type="radio" :value="choice"
+                      :name="question.id" v-model="responses[question.id]" />
                   </div>
                   <!-- Label radio button  -->
                   <div class="col-10 col-md-10 col-lg-10">
-                    <label :for="'radio'+index+'-'+question.id"  class="text-white "> {{ choice }} </label>
+                    <label :for="'radio'+index+'-'+question.id" class="text-white "> {{ choice }} </label>
                   </div>
                 </div>
               </div>
             </div>
+
             <!-- Type B -->
             <div class="text-center" v-else-if="question.type === 'B'">
               <!-- If question 1 => input email -->
               <div v-if="question.id === 1">
                 <label for="email" class="text-white">Saisissez votre email :</label>
-                <input id="email" class="col-10 rounded-3 col-lg-8 pb-2 pb-2" type="email" :name="question.id"
-                  title="Entrer votre email" aria-label="champ email" placeholder="exemple@gmail.com" required
+                <input id="email" class="rounded-3 pb-2 col-10 col-lg-8 " type="email" :name="question.id"
+                  title="Entrez votre email" aria-label="champ email" placeholder="exemple@gmail.com" required
                   maxlength="255" v-model="responses[question.id]" />
               </div>
+              
               <!-- If question 2 => input age -->
               <div v-else-if="question.id === 2">
                 <label for="age" class="text-white">Saisissez votre âge :</label>
-                <input id="age" class="col-10 rounded-3 col-lg-8 pb-2 pb-2"  type="text" :name="question.id"
-                title="Entrer votre âge" aria-label="champ âge" placeholder="ex : 12" maxlength="3" v-model="responses[question.id]" />
+                <input id="age" class="rounded-3 pb-2 col-10 col-lg-8" type="text" :name="question.id"
+                  title="Entrez votre âge" aria-label="champ âge" placeholder="ex : 12" maxlength="3"
+                  v-model="responses[question.id]" />
               </div>
 
-              <textarea class="rounded-3 col-11 col-lg-11" :name="question.id"
-              title="Entrer votre réponse" :aria-label="'champ réponse question'+question.id" cols="30" rows="10" maxlength="255" v-else
+              <textarea class="rounded-3 col-11 col-lg-11" :name="question.id" title="Entrer votre réponse"
+                :aria-label="'champ réponse question'+question.id" cols="30" rows="10" maxlength="255" v-else
                 v-model="responses[question.id]" required></textarea>
             </div>
+
             <!-- Type C -->
-            <div class="col-12 col-md-12 col-lg-12 m-auto row" v-else-if="question.type === 'C'">
-              <div class="col-2 col-md-2 col-lg-2 m-auto" v-for="index in 5" :key="index">
+            <div class="row m-auto col-12 col-md-12 col-lg-12" v-else-if="question.type === 'C'">
+              <div class="m-auto col-2 col-md-2 col-lg-2 " v-for="index in 5" :key="index">
                 <!-- From 1 to 5, create radio button with value equal to index (1-5)-->
-                <input :id="'quality'+index+'-'+question.id" class="col-3 col-md-4 col-lg-3 mx-2" type="radio" :name="question.id"
-                title="Notez la qualité" :aria-label="'champ note qualité question'+question.id" :value="index"
-                  v-model="responses[question.id]" required />
-                <label :for="'quality'+index+'-'+question.id" class="col-2 col-md-6 col-lg-3 text-white"> {{ index }} </label>
+                <input :id="'quality'+index+'-'+question.id" class="mx-2 col-3 col-md-4 col-lg-3 " type="radio"
+                  :name="question.id" title="Notez la qualité" :aria-label="'champ note qualité question'+question.id"
+                  :value="index" v-model="responses[question.id]" required />
+                <label :for="'quality'+index+'-'+question.id" class="text-white col-2 col-md-6 col-lg-3 "> {{ index }}
+                </label>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
       <!-- If no error, display button to send the poll-->
       <div v-if="this.error == ''">
         <ModalLinkResponses :questions="this.questions" :responses="this.responses" />
@@ -105,5 +111,5 @@ export default {
 </template>
 
 <style scoped>
-  @import "../../assets/pollCss/poll.css";
-  </style>
+@import "../../assets/pollCss/poll.css";
+</style>

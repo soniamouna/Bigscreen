@@ -19,8 +19,6 @@ export default {
         axios.get(this.apiURL + "questions") //get the whole questions from the database
             .then((response) => {
                 this.questions = response.data
-
-
             })
             .catch((err) => this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.");
 
@@ -39,10 +37,6 @@ export default {
 
             })
             .catch((err) => this.error = "Une erreur est survenue. Veuillez recharger la page ultérieurement.");
-
-
-
-
     },
     components: { TabResponses, NavbarAdmin }
 }
@@ -50,13 +44,12 @@ export default {
     
 <template>
     <div class=" m-auto col-12 col-md-12 col-lg-9 col-xl-10 ">
-        <!-- Navbar -->
-        <div class=" col-lg-12 p-4 m-auto">
+        <div class="m-auto p-4  col-lg-12 ">
             <h1 class="fw-bolder text-center">Liste des différentes réponses du sondage</h1>
             <!-- If there are no poll recorded, display a  message -->
-            <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.message!=''">{{this.message}}</p>
+            <p class="fw-bold fs-lg-5 fs-xl-5 text-center " v-if="this.message!=''">{{this.message}}</p>
             <!-- Else if there is an error, display the error's message -->
-            <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-else-if="this.error!=''">{{this.error}}</p>
+            <p class="fw-bold fs-lg-5 fs-xl-5 text-center " v-else-if="this.error!=''">{{this.error}}</p>
             <!-- Else display the responses'tables -->
             <TabResponses v-else :questions="this.questions" :responses="this.responses" :error="this.error" />
         </div>
@@ -68,5 +61,5 @@ export default {
     
     
 <style scoped>
-    @import '../../assets/adminRight/adminRightSide.css'
+@import '../../assets/adminRight/adminRightSide.css'
 </style>
