@@ -51,11 +51,11 @@ export default {
                 data: this.averages,
                 fill: true,
                 backgroundColor: 'rgba(210,171,255,0.3)',
-                borderColor: '#A354FF',
-                pointBackgroundColor: '#6202D2',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
+                borderColor: 'rgba(163,84,255,0.6)',
+                pointBackgroundColor: 'rgba(98, 2, 210 ,0.8)',
+                pointBorderColor: 'rgba(243, 227, 255 ,1)',
+                pointHoverBackgroundColor: 'rgba(243, 227, 255 ,1)',
+                pointHoverBorderColor: 'rgba(163,84,255,0.6)'
             }],
             options: [{
                 responsive: true
