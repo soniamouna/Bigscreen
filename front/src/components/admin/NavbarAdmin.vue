@@ -79,7 +79,7 @@ export default {
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name:'adminResponses'}">Réponses</router-link>
                         </li>
-                        <button class="btnDeco p-1 m-automt-2 col-6 col-md-4 col-lg-8 "
+                        <button class="btnDeco p-1 m-auto mt-2 col-6 col-md-4 col-lg-8 "
                             @click="logout()">Déconnexion</button>
                     </ul>
 
