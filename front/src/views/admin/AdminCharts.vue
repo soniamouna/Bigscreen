@@ -10,29 +10,28 @@ export default {
 </script>
 
 <template>
-    <div class=" m-auto row col-12 col-md-12 col-lg-12 ">
+    <div class=" col-12 col-md-12 col-lg-9 col-xl-10 ">
         <!-- Component navbar admin -->
-        <NavbarAdmin page="home" />
-        <div class=" scroll-page col-12 col-md-9 col-lg-9 col-xl-9 pb-5 m-auto ">
+            <div class="  col-12 col-md-12 col-lg-12 col-xl-12 py-4">
             <!-- Display the different Charts -->
-            <div class=" col-12 col-lg-12 col-xl-12 m-auto row d-flex justify-content-center justify-content-around g-4">
+            <div class="m-auto col-12 col-lg-12 col-xl-12 row d-flex justify-content-center justify-content-around g-5">
                 <!-- Piecharts Question 6 -->
-                <div class="chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                <div class="border border-dark rounded-5 p-4 col-12 col-lg-5 col-xl-5">
                     <PieCharts6 />
                 </div>
                 <!-- Piecharts Question 7 -->
 
-                <div class=" chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                <div class=" border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
                     <PieCharts7 />
                 </div>
 
                 <!-- Piecharts Question 10 -->
 
-                <div class=" chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                <div class=" border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
                     <PieCharts10 />
                 </div>
                 <!-- RadarCharts Question from 11 to 15 -->
-                <div class=" chartsContainer border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
+                <div class=" border border-dark rounded-5 p-4 col-lg-5 col-xl-5">
                     <RadarCharts />
                 </div>
 

@@ -37,9 +37,9 @@ export default {
             </tr>
             <!-- For each question create a line into the table -->
             <tr v-for="question,i in questions" :key="question.id" class="col-lg-12">
-                <td class=" text-center col-lg-1">{{question.id}}</td>
-                <td class="break-keep-all col-lg-7">{{question.title}}</td>
-                <td class="break text-center col-lg-3">{{response[i].value}}</td>
+                <td class=" text-center col-1 col-lg-1">{{question.id}}</td>
+                <td class="break-keep-all col-5 col-lg-7">{{question.title}}</td>
+                <td class="break text-center col-5 col-lg-3">{{response[i].value}}</td>
             </tr>
 
 

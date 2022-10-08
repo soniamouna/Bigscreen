@@ -23,10 +23,9 @@ export default {
 </script>
 
 <template>
-    <div class="row m-auto col-12 col-md-12 col-lg-12">
+    <div class=" m-auto col-12 col-md-12 col-lg-9 col-xl-10 ">
         <!-- Component navbar Admin -->
-        <NavbarAdmin page="questions"/>
-        <div class="scroll-page col-lg-9 p-4 m-auto">
+        <div class=" col-lg-12 p-4 m-auto">
             <h1 class="fw-bolder text-center">Liste des questions du sondage</h1>
             <!-- If there is an error display the error's message -->
             <p class="fw-bold text-center fs-lg-5 fs-xl-5" v-if="this.error!=''">{{this.error}}</p>

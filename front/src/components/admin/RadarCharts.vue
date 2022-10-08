@@ -50,7 +50,7 @@ export default {
                 label: 'Moyenne de la qualité de Bigscreen',
                 data: this.averages,
                 fill: true,
-                backgroundColor: '#D2ABFF',
+                backgroundColor: 'rgba(210,171,255,0.3)',
                 borderColor: '#A354FF',
                 pointBackgroundColor: '#6202D2',
                 pointBorderColor: '#fff',
