@@ -24,6 +24,7 @@ export default {
 }
 
 .link404{
+    display: inline-block;
     border-radius: 10px;
     background-color: white;
     color: rgb(47, 0, 69);
