@@ -8,7 +8,7 @@ export default {
     
 <template>
     <div class="poll-container m-auto my-lg-5 py-lg-4 col-lg-11">
-        <div class="headerBackgroundm-auto mt-lg-2 py-4 col-lg-11 ">
+        <div class="headerBackground m-auto mt-lg-2 py-4 col-lg-11 ">
             <!-- Logo -->
             <h1 class="logo text-white m-auto pb-3 col-10 col-lg-10 col-xl-9 ">
                 BIGSCREEN
