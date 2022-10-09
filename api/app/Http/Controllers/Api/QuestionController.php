@@ -37,7 +37,7 @@ class QuestionController extends Controller
             }
             array_push($questionsResponseJson, $JSONItem);
         }
-        return response()->json($questionsResponseJson, 200); //Return a json response
+        return response()->json($questionsResponseJson, 200); //Return a json response with all questions
     }
 
     /**
