@@ -54,7 +54,7 @@ export default {
                   <div class="col-2 col-md-2 col-lg-2 ">
                     <!-- For each choice, create radio button with a value corresponding to the choice-->
                     <input :id="'radio'+index+'-'+question.id" class="m-auto" type="radio" :value="choice"
-                      :name="question.id" v-model="responses[question.id]" />
+                      :name="question.id" v-model="responses[question.id]" :aria-label="choice"/>
                   </div>
                   <!-- Label radio button  -->
                   <div class="col-10 col-md-10 col-lg-10">
