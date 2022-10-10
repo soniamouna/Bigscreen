@@ -74,7 +74,7 @@ export default {
                             <router-link class="nav-link" :to="{name:'adminCharts'}">Accueil</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" :to="{name:'adminQuestions'}">Questions</router-link>
+                            <router-link class="nav-link" :to="{name:'adminQuestions'}">Questionnaire</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name:'adminResponses'}">Réponses</router-link>

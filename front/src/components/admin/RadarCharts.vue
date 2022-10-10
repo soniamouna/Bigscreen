@@ -12,9 +12,6 @@ export default {
 
         }
     },
-    methods: {
-
-    },
     async mounted() {
         const token = localStorage.getItem("token") //get the token into the localStorage
 
